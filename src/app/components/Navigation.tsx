@@ -38,7 +38,7 @@ function NavItem({
       className={`cursor-pointer flex ${
         isDesktop
           ? "flex-row items-center px-8 py-4 gap-4 w-[276px] h-[56px] rounded-r-[12px]"
-          : "flex-col items-center justify-center pt-2 pb-3 gap-1 mx-auto"
+          : "flex-col items-center justify-center pt-2 pb-3 gap-1 mx-auto rounded-md"
       } relative ${isActive ? "bg-[#F8F4F0]" : ""} ${
         !isDesktop
           ? showText
@@ -134,7 +134,7 @@ export default function Navigation() {
       {/* Mobile & Tablet Bottom Nav */}
       <nav
         aria-label="Mobile and Tablet Navigation"
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center px-4 pt-2 bg-[#201F24] h-[52px] md:h-[74px] "
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center px-4 pt-2 bg-[#201F24] h-[52px] md:h-[74px]  "
       >
         {NavLinks.map((link) => (
           <NavItem
