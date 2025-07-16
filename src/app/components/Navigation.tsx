@@ -81,40 +81,40 @@ export default function Navigation() {
       {
         id: "0",
         text: "overview",
-        image: "images/home.svg",
-        activeImage: "images/home-active.svg",
+        image: "images/navigation/home.svg",
+        activeImage: "images/navigation/home-active.svg",
         path: "/",
         alt: "home",
       },
       {
         id: "1",
         text: "transactions",
-        image: "images/transactions.svg",
-        activeImage: "images/transactions-active.svg",
+        image: "images/navigation/transactions.svg",
+        activeImage: "images/navigation/transactions-active.svg",
         path: "/transactions",
         alt: "transactions",
       },
       {
         id: "2",
         text: "budgets",
-        image: "images/budgets.svg",
-        activeImage: "images/budgets-active.svg",
+        image: "images/navigation/budgets.svg",
+        activeImage: "images/navigation/budgets-active.svg",
         path: "/budgets",
         alt: "budgets",
       },
       {
         id: "3",
         text: "pots",
-        image: "images/pots.svg",
-        activeImage: "images/pots-active.svg",
+        image: "images/navigation/pots.svg",
+        activeImage: "images/navigation/pots-active.svg",
         path: "/pots",
         alt: "pots",
       },
       {
         id: "4",
         text: "recurring bills",
-        image: "images/bills.svg",
-        activeImage: "images/bills-active.svg",
+        image: "images/navigation/bills.svg",
+        activeImage: "images/navigation/bills-active.svg",
         path: "/recurring-bills",
         alt: "bills",
       },
@@ -155,7 +155,12 @@ export default function Navigation() {
       >
         {/* Logo */}
         <div className="flex flex-col justify-center items-start px-8 py-10 gap-2 w-full h-[101.76px]">
-          <Image src="/images/logo.svg" alt="Logo" width={120} height={20} />
+          <Image
+            src="/images/navigation/logo.svg"
+            alt="Logo"
+            width={120}
+            height={20}
+          />
         </div>
 
         {NavLinks.map((link) => (

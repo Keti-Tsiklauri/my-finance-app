@@ -1,4 +1,6 @@
 import AddButton from "../components/add-button/AddButton";
+import SpendingSummary from "../components/spending-summary/SpendingSummary";
+import SpendingTypes from "../components/spending/SpendingTypes";
 
 export default function Budgets() {
   return (
@@ -9,6 +11,8 @@ export default function Budgets() {
         </p>
         <AddButton text="+ add new budget" />
       </div>
+      <SpendingSummary />
+      <SpendingTypes />
     </div>
   );
 }
