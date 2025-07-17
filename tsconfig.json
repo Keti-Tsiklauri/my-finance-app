@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/spending/useData,js"
+    "src/app/components/spending/useData,js",
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }
