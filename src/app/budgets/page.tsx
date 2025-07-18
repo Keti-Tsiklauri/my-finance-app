@@ -1,18 +1,17 @@
-import AddButton from "../components/add-button/AddButton";
 import SpendingSummary from "../components/spending-summary/SpendingSummary";
 import SpendingTypes from "../components/spending/SpendingTypes";
-
+import BudgetsHeader from "../components/headers/BudgetsHeader";
 export default function Budgets() {
   return (
     <div>
-      <div className="mt-2 flex flex-row justify-between items-center py-2 gap-6 w-full max-w-[1440px] h-[56px] flex-none order-0 self-stretch flex-grow-0 px-4 md:px-6 lg:px-8">
-        <p className="mx-auto w-[128px] h-[38px] font-publicSans font-bold text-[32px] leading-[120%] text-[#201F24] flex-none order-0 flex-grow-0">
-          budgets
-        </p>
-        <AddButton text="+ add new budget" />
+      <BudgetsHeader text="Budgets " />
+
+      <div className="px-4 lg:px-12 xl:px-10 ">
+        <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between xl:gap-8 xxl:gap-20">
+          <SpendingSummary />
+          <SpendingTypes />
+        </div>
       </div>
-      <SpendingSummary />
-      <SpendingTypes />
     </div>
   );
 }

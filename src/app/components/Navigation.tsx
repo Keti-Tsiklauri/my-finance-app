@@ -48,7 +48,7 @@ function NavItem({
       }`}
     >
       {isDesktop && isActive && (
-        <div className="absolute left-0 top-0 h-full w-[4px] bg-[#277C78] rounded-r" />
+        <div className="absolute left-0 top-0  w-[4px] bg-[#277C78] rounded-r" />
       )}
       {!isDesktop && isActive && (
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#277C78] rounded-t-md" />
@@ -151,7 +151,7 @@ export default function Navigation() {
       {/* Desktop Left Sidebar */}
       <nav
         aria-label="Desktop Navigation"
-        className="hidden lg:flex flex-col items-start p-0 pb-6 gap-6 w-[300px] h-[1024px] bg-[#201F24] rounded-r-[16px]"
+        className="hidden h-screen  overflow-y-auto lg:flex flex-col items-start p-0 pb-6 gap-6 w-[300px]  bg-[#201F24] rounded-r-[16px]"
       >
         {/* Logo */}
         <div className="flex flex-col justify-center items-start px-8 py-10 gap-2 w-full h-[101.76px]">

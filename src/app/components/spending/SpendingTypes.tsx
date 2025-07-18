@@ -73,7 +73,7 @@ export default function SpendingTypes() {
   const summary = getBudgetSummary();
 
   return (
-    <div className="w-[343px] mx-auto mb-[100px]">
+    <div className="w-[343px] md:w-[700px] lg:!w-[600px]  mb-[100px] mx-auto  ">
       {/* Header */}
 
       {/* Categories and budgets */}
@@ -88,8 +88,11 @@ export default function SpendingTypes() {
           .slice(0, 3); // 👈 Only take 3 most recent
 
         return (
-          <div key={category} className="mb-8">
-            <div>
+          <div
+            key={category}
+            className="mb-10 w-[343px] md:w-[700px] lg:!w-[600px] md:m-auto"
+          >
+            <div className="flex justify-between">
               <h2 className="flex items-center gap-2 mb-1">
                 <Ellipse color={color} />
                 <p className="h-[24px] font-public-sans font-extrabold text-[20px] leading-[1.2] text-gray-900">
@@ -106,7 +109,7 @@ export default function SpendingTypes() {
             <p className="text-sm text-gray-500 mb-2">
               Maximum of ${maximum.toFixed(2)}
             </p>
-            <div className="flex items-start p-1 w-[303px] h-[32px] bg-[#F8F4F0] rounded-[4px] mb-2">
+            <div className="flex items-start p-1 h-[32px] bg-[#F8F4F0] rounded-[4px] mb-2 w-[303px] md:w-[700px] lg:w-[600px]">
               <div
                 className="h-full rounded-[4px]"
                 style={{
