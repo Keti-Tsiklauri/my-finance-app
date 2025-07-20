@@ -1,7 +1,8 @@
 "use client";
 import useData from "../useData";
 import Image from "next/image";
-
+import { formatAmount } from "../helperFunctions/formatAmount";
+import { formatDate } from "../helperFunctions/formatDate";
 function Ellipse({ color }: { color: string }) {
   return (
     <div
@@ -28,35 +29,6 @@ export default function SpendingTypes() {
   const getThemeColor = (category: string) => {
     const budget = budgets.find((b) => b.category === category);
     return budget ? budget.theme : "#000";
-  };
-
-  const formatAmount = (amount: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 2,
-    }).format(amount);
-
-  const formatDate = (isoDateStr: string) => {
-    const date = new Date(isoDateStr);
-    const day = date.getUTCDate();
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const month = months[date.getUTCMonth()];
-    const year = date.getUTCFullYear();
-    return `${day} ${month} ${year}`;
   };
 
   // Calculate spent and free per category

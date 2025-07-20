@@ -6,6 +6,8 @@ module.exports = {
       width: ["important"],
       screens: {
         xs: "500px",
+        xl: "750px",
+        m: "1000px",
         xxl: "1440px",
       },
     },
