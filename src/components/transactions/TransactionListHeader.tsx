@@ -26,13 +26,13 @@ export default function TransactionListHeader() {
 
   return (
     <div
-      className="box-border flex flex-row items-center gap-[32px]
+      className="box-border  flex-row items-center gap-[32px]
         border-b border-[#F2F2F2]
         flex-none flex-grow-0 self-stretch
         order-2 p-y-[12px] px-0 w-[624px] h-[60px]
         md:order-2 md:py-[12px] md:px-0 md:w-[624px] md:h-[60px]
         xxl:order-1 xxl:px-[16px] xxl:w-[996px] xxl:h-[42px]
-        mx-auto"
+        mx-auto  hidden md:flex"
     >
       {transactionDetails.map((item, index) => (
         <div key={index} className={item.className}>
