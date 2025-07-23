@@ -5,23 +5,16 @@ import { formatAmount } from "../helperFunctions/formatAmount";
 
 interface TransactionListProps {
   transactions: Transaction[];
-  currentPage: number;
 }
 
 export default function TransactionList({
   transactions,
-  currentPage,
 }: TransactionListProps) {
-  const itemsPerPage = 10;
-
-  const start = (currentPage - 1) * itemsPerPage;
-  const currentTransactions = transactions.slice(start, start + itemsPerPage);
-
   return (
     <div className="w-full max-w-[996px] mx-auto px-4 h-[720px]">
       {/* Mobile Layout */}
       <div className="md:hidden w-full max-w-[380px] mx-auto">
-        {currentTransactions.map((elem, index) => (
+        {transactions.map((elem, index) => (
           <div
             key={index}
             className="flex justify-between items-center w-full mb-4"
@@ -58,7 +51,7 @@ export default function TransactionList({
 
       {/* Desktop Layout */}
       <div className="hidden md:flex flex-col gap-5 h-[600px]">
-        {currentTransactions.map((elem, index) => (
+        {transactions.map((elem, index) => (
           <div
             key={index}
             className="flex items-center gap-8 rounded-[8px] self-stretch

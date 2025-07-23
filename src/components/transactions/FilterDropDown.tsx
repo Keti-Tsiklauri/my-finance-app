@@ -59,13 +59,13 @@ export default function FilterDropDown({
       ref={containerRef}
       className={`flex items-center justify-between ${divWidth} relative`}
     >
-      <p className="h-[21px] text-[14px] leading-[150%] font-normal text-[#696868] font-['Public_Sans']">
+      <p className="h-[21px] text-[14px] leading-[150%] font-normal text-[#696868] font-['Public_Sans'] hidden md:block">
         {filterBased}
       </p>
 
       <div
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex h-[45px] items-center bg-white border border-[#98908B] rounded-[8px] px-4 cursor-pointer justify-between ${className} w-full`}
+        className={`flex h-[35px] md:h-[45px] items-center bg-white border border-[#98908B] rounded-[8px] px-1 cursor-pointer justify-between ${className} w-full`}
       >
         <p className="h-[21px] font-normal text-[14px] leading-[21px] text-[#201F24]">
           {option}
