@@ -5,6 +5,7 @@ import { formatAmount } from "../helperFunctions/formatAmount";
 
 interface TransactionListProps {
   transactions: Transaction[];
+  currentPage: number;
 }
 
 export default function TransactionList({

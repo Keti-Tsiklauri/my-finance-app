@@ -6,15 +6,16 @@ import TransactionList from "./TransactionList";
 import FilterDropDown from "./FilterDropDown";
 import SearchTransaction from "../search/Search";
 import TransactionListHeader from "./TransactionListHeader";
+import type { Transaction } from "@/types/types";
 
 export default function TransactionsWrapper() {
+  const [filteredTransactions, setFilteredTransactions] = useState<
+    Transaction[]
+  >([]);
   const [searchQuery, setSearchQuery] = useState("");
   const data = useData();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredTransactions, setFilteredTransactions] = useState<
-    typeof data extends null ? never[] : typeof data.transactions
-  >([]);
 
   // Filter selections
   const [sortOption, setSortOption] = useState("Latest");
