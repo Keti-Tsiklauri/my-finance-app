@@ -62,9 +62,9 @@ export default function SpendingTypes() {
         return (
           <div
             key={category}
-            className="mb-10 w-[343px] md:w-[700px] lg:!w-[600px] md:m-auto"
+            className="mb-10 w-[343px] md:w-[700px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8 "
           >
-            <div className="flex justify-between">
+            <div className="flex justify-between mt-5">
               <h2 className="flex items-center gap-2 mb-1">
                 <Ellipse color={color} />
                 <p className="h-[24px] font-public-sans font-extrabold text-[20px] leading-[1.2] text-gray-900">

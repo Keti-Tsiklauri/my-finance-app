@@ -7,7 +7,7 @@ export default function Budgets() {
       <BudgetsHeader text="Budgets " />
 
       <div className="px-4 lg:px-12 xl:px-10 ">
-        <div className="flex flex-col xxl:gap-20">
+        <div className="flex flex-col xxl:gap-20 xxl:flex-row">
           <SpendingSummary />
           <SpendingTypes />
         </div>
