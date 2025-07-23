@@ -1,5 +1,3 @@
-import FilterDropDown from "@/components/transactions/FilterDropDown";
-import TransactionListHeader from "@/components/transactions/TransactionListHeader";
 import TransactionsPageWrapper from "@/components/transactions/TransactionPageWrapper";
 export default function Transactions() {
   const sort = [
@@ -16,7 +14,6 @@ export default function Transactions() {
         Transactions
       </h1>
 
-      <TransactionListHeader />
       <div className="pb-[74px] md:pb-[80px]">
         <TransactionsPageWrapper />
       </div>

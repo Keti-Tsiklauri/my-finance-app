@@ -4,6 +4,8 @@ import useData from "../useData";
 import Pagination from "./Pagination";
 import TransactionList from "./TransactionList";
 import FilterDropDown from "./FilterDropDown";
+import SearchTransaction from "./SearchTransaction";
+import TransactionListHeader from "./TransactionListHeader";
 
 export default function TransactionsWrapper() {
   const data = useData();
@@ -80,31 +82,34 @@ export default function TransactionsWrapper() {
 
   return (
     <>
-      <div className="flex">
-        <FilterDropDown
-          text="Latest"
-          className="w-[113px]"
-          divWidth="w-[170px]"
-          filterBased="Sort by"
-          filter={[
-            { id: 0, name: "Latest" },
-            { id: 1, name: "Oldest" },
-            { id: 2, name: "Highest Amount" },
-            { id: 3, name: "Lowest Amount" },
-          ]}
-          onSelect={setSortOption}
-        />
+      <div className="flex justify-between xxl:w-[1000px] mx-auto mb-[20px] mt-[20px]">
+        <SearchTransaction />
+        <div className="md:flex w-[430px] justify-between hidden ">
+          <FilterDropDown
+            text="Latest"
+            className="w-[113px]"
+            divWidth="w-[170px]"
+            filterBased="Sort by"
+            filter={[
+              { id: 0, name: "Latest" },
+              { id: 1, name: "Oldest" },
+              { id: 2, name: "Highest Amount" },
+              { id: 3, name: "Lowest Amount" },
+            ]}
+            onSelect={setSortOption}
+          />
 
-        <FilterDropDown
-          text="All"
-          className="w-[177px]"
-          divWidth="w-[245px]"
-          filterBased="Category"
-          filter={categories}
-          onSelect={setCategoryFilter}
-        />
+          <FilterDropDown
+            text="All"
+            className="w-[177px]"
+            divWidth="w-[245px]"
+            filterBased="Category"
+            filter={categories}
+            onSelect={setCategoryFilter}
+          />
+        </div>
       </div>
-
+      <TransactionListHeader />
       <TransactionList transactions={currentItems} currentPage={currentPage} />
 
       <Pagination
