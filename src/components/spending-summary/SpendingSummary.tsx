@@ -38,7 +38,7 @@ export default function SpendingSummary() {
   };
 
   return (
-    <div className="w-[343px] md:w-[700px] lg:w-[600px] xl:w-[300px] xl:h-[600px] mx-auto xl:mx-0 flex flex-col justify-start items-start gap-[32px] bg-white rounded-[12px] flex-none order-0 self-stretch flex-grow-0">
+    <div className="w-[343px] md:w-[700px] lg:w-[600px] xl:w-[300px]  mx-auto xl:mx-0 flex flex-col justify-start items-start gap-[32px] bg-white rounded-[12px] flex-none order-0 self-stretch flex-grow-0">
       <h2 className="w-[189px] h-[24px] font-publicSans font-bold text-[20px]  text-[#201F24] flex-none order-0 flex-grow-0 pb-0">
         Spending Summary
       </h2>
