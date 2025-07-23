@@ -69,7 +69,26 @@ export default function PotsTypes() {
           </div>
 
           {/* buttons */}
-          <div></div>
+          <div className="flex justify-around mt-6">
+            <button
+              className=" 
+    w-[140px]  md:w-[300px] xxl:w-[220px] h-[53px]
+    bg-[#F8F4F0]
+    rounded-lg
+     cursor-pointer"
+            >
+              + Add Money
+            </button>
+            <button
+              className="  w-[140px]
+    md:w-[300px] h-[53px] xxl:w-[220px]
+    bg-[#F8F4F0]
+    rounded-lg
+     cursor-pointer"
+            >
+              Withdrow
+            </button>
+          </div>
         </div>
       ))}
     </div>
