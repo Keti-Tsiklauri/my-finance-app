@@ -18,9 +18,16 @@ export interface Balance {
   income: number;
   expenses: number;
 }
+export interface Pots {
+  name: string;
+  target: number;
+  total: number;
+  theme: string;
+}
 
 export interface Data {
   balance: Balance;
   budgets: Budgets[];
   transactions: Transaction[];
+  pots: Pots[];
 }

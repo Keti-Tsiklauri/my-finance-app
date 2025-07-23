@@ -1,6 +1,6 @@
 import SpendingSummary from "@/components/spending-summary/SpendingSummary";
 import SpendingTypes from "@/components/spending/SpendingTypes";
-import BudgetsHeader from "@/components/headers/BudgetsHeader";
+import BudgetsHeader from "@/components/shared/headers/Header";
 export default function Budgets() {
   return (
     <div>

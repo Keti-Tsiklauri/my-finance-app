@@ -4,7 +4,7 @@ import useData from "../useData";
 import Pagination from "./Pagination";
 import TransactionList from "./TransactionList";
 import FilterDropDown from "./FilterDropDown";
-import SearchTransaction from "../search/Search";
+import SearchTransaction from "../shared/search/Search";
 import TransactionListHeader from "./TransactionListHeader";
 import type { Transaction } from "@/types/types";
 

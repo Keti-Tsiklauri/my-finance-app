@@ -3,6 +3,7 @@ import useData from "../useData";
 import Image from "next/image";
 import { formatAmount } from "../helperFunctions/formatAmount";
 import { formatDate } from "../helperFunctions/formatDate";
+import CategoryHeader from "../shared/list-header/CategoryHeader";
 function Ellipse({ color }: { color: string }) {
   return (
     <div
@@ -64,20 +65,11 @@ export default function SpendingTypes() {
             key={category}
             className="mb-10 w-[343px] md:w-[700px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8 "
           >
-            <div className="flex justify-between mt-5">
-              <h2 className="flex items-center gap-2 mb-1">
-                <Ellipse color={color} />
-                <p className="h-[24px] font-public-sans font-extrabold text-[20px] leading-[1.2] text-gray-900">
-                  {category}
-                </p>
-              </h2>
-              <Image
-                src="images/budgets/spread.svg"
-                alt="more"
-                width={14}
-                height={14}
-              />
-            </div>
+            <CategoryHeader
+              color={color}
+              category={category}
+              className="w-full"
+            />
             <p className="text-sm text-gray-500 mb-2">
               Maximum of ${maximum.toFixed(2)}
             </p>

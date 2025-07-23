@@ -1,7 +1,11 @@
+import Header from "@/components/shared/headers/Header";
+import PotsTypes from "@/components/pots-types/PotsTypes";
+
 export default function Pots() {
   return (
     <div>
-      <p>pots</p>
+      <Header text="Pots" />
+      <PotsTypes />
     </div>
   );
 }
