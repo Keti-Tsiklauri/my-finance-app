@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-[#F8F4F0]">
       <body className="flex flex-col lg:flex-row min-h-screen overflow-hidden">
         {/* Sidebar Navigation */}
 

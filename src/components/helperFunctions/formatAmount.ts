@@ -7,3 +7,11 @@ export const formatAmount = (amount: number) => {
 
   return amount >= 0 ? `+${formatted}` : `-${formatted}`;
 };
+
+//format 3455,34 as $3,455.34
+export function formatCurrency(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(value);
+}
