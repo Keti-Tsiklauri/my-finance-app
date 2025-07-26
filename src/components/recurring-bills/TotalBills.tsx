@@ -1,7 +1,7 @@
 "use client";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { formatAmount } from "../helperFunctions/formatAmount";
-import useData from "../useData";
+import useData from "../../app/hooks/useData";
 import Image from "next/image";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
 export interface Bill {
@@ -50,8 +50,8 @@ export default function TotalBills({ bills }: { bills: Bill[] }) {
   console.log({ totalPaid, totalUpcoming, totalDueSoon });
   console.log("biils", bills);
   return (
-    <div className="flex  flex-col  w-[343px] mx-auto md:flex-row md:w-[700px] xxl:flex-col xxl:w-[340px]">
-      <div className="flex items-center p-[24px_20px] gap-[20px] h-[118px] bg-[#201F24] rounded-[12px]">
+    <div className="flex  flex-col  w-[343px] mx-auto md:flex-row md:w-[700px] xxl:flex-col xxl:w-[340px] md:justify-between">
+      <div className="flex items-center p-[24px_20px] gap-[20px] h-[118px] bg-[#201F24] rounded-[12px] md:w-[330px] ">
         <Image
           src="images/recurring-bills/icon.svg"
           width={30}
@@ -67,7 +67,7 @@ export default function TotalBills({ bills }: { bills: Bill[] }) {
           </p>
         </div>
       </div>
-      <div className="w-[343px] px-[20px] flex flex-col gap-2">
+      <div className="w-[343px] px-[20px] flex flex-col gap-2 md:w-[330px]">
         <p className="h-[24px] font-bold text-[16px] leading-[150%] text-[#201F24]">
           {capitalizeEachWord("summary")}
         </p>

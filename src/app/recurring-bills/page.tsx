@@ -1,28 +1,19 @@
 "use client";
-import BillsList from "@/components/recurring-bills/BillsList";
-import TotalBills from "@/components/recurring-bills/TotalBills";
-import useData from "@/components/useData";
+import useData from "@/app/hooks/useData";
+import BillsWrapper from "@/components/recurring-bills/BillsWrapper";
+
 export default function RecurringBills() {
   const data = useData();
   if (!data) return <p>Loading...</p>;
 
-  const { transactions } = data;
-  const bills = transactions.filter((t) => t.category === "Bills");
+  const bills = data.transactions.filter((t) => t.category === "Bills");
 
   return (
     <div>
-      <p
-        className="h-[38px]
-    font-public-sans font-bold
-    text-[32px] leading-[120%]
-    text-[#201F24]"
-      >
+      <p className="w-[343px] md:w-[700px] xxl:w-[1180px] h-[38px] font-bold text-[32px] leading-[120%] text-[#201F24] mx-auto">
         recurring bills
       </p>
-      <div className="flex flex-col xxl:flex-row gap-8 mt-6">
-        <TotalBills bills={bills} />
-        <BillsList bills={bills} />
-      </div>
+      <BillsWrapper bills={bills} />
     </div>
   );
 }

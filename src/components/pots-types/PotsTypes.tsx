@@ -1,5 +1,5 @@
 "use client";
-import useData from "../useData";
+import useData from "../../app/hooks/useData";
 
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";

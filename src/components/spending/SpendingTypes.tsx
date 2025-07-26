@@ -1,5 +1,5 @@
 "use client";
-import useData from "../useData";
+import useData from "../../app/hooks/useData";
 import Image from "next/image";
 import { formatAmount } from "../helperFunctions/formatAmount";
 import { formatDate } from "../helperFunctions/formatDate";
