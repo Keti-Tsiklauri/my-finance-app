@@ -1,7 +1,7 @@
 import AddButton from "../../add-button/AddButton";
 export default function BudgetsHeader({ text }: { text: string }) {
   return (
-    <div className="flex justify-between w-auto min-w-[344px] mx-auto px-4 xxl:gap-20">
+    <div className="w-[343px] md:w-[700px]  xxl:w-[1180px]  order-0 flex-none flex-grow-0 mx-auto flex justify-between">
       <p className="h-[38px] font-publicSans font-bold text-[32px] leading-[120%] text-[#201F24] w-[128px]">
         {text}
       </p>

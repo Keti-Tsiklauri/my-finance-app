@@ -11,7 +11,7 @@ export default function BillsWrapper({ bills }: { bills: Bill[] }) {
   return (
     <div className="flex flex-col xxl:flex-row gap-8 mt-6 xxl:w-[1100px] xxl:mx-auto">
       <div>
-        <TotalBills bills={filteredBills} />
+        <TotalBills bills={bills} />
       </div>
       <div>
         <SearchBills bills={bills} onFilter={setFilteredBills} />

@@ -166,6 +166,54 @@
       "recurring": false
     },
     {
+      "avatar": "./assets/images/avatars/spark-electric-solutions.jpg",
+      "name": "Spark Electric Solutions",
+      "category": "Bills",
+      "date": "2025-09-02T09:25:11Z",
+      "amount": -100.0,
+      "recurring": true
+    },
+    {
+      "avatar": "./assets/images/avatars/rina-sato.jpg",
+      "name": "Rina Sato",
+      "category": "Bills",
+      "date": "2025-09-02T13:31:11Z",
+      "amount": -50.0,
+      "recurring": false
+    },
+    {
+      "avatar": "./assets/images/avatars/spark-electric-solutions.jpg",
+      "name": "Spark Electric Solutions",
+      "category": "Bills",
+      "date": "2025-09-06T09:25:11Z",
+      "amount": -100.0,
+      "recurring": true
+    },
+    {
+      "avatar": "./assets/images/avatars/rina-sato.jpg",
+      "name": "Rina Sato",
+      "category": "Bills",
+      "date": "2025-09-010T13:31:11Z",
+      "amount": -50.0,
+      "recurring": false
+    },
+    {
+      "avatar": "./assets/images/avatars/spark-electric-solutions.jpg",
+      "name": "Spark Electric Solutions",
+      "category": "Bills",
+      "date": "2025-10-06T09:25:11Z",
+      "amount": -100.0,
+      "recurring": true
+    },
+    {
+      "avatar": "./assets/images/avatars/rina-sato.jpg",
+      "name": "Rina Sato",
+      "category": "Bills",
+      "date": "2025-10-010T13:31:11Z",
+      "amount": -50.0,
+      "recurring": false
+    },
+    {
       "avatar": "./assets/images/avatars/swift-ride-share.jpg",
       "name": "Swift Ride Share",
       "category": "Transportation",

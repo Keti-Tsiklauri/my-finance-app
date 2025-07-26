@@ -83,7 +83,7 @@ export default function Navigation() {
         text: "overview",
         image: "images/navigation/home.svg",
         activeImage: "images/navigation/home-active.svg",
-        path: "/",
+        path: "/overview",
         alt: "home",
       },
       {

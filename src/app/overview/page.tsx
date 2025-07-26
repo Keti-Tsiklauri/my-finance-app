@@ -1,7 +1,9 @@
 export default function OverView() {
   return (
     <div>
-      <p>overview</p>
+      <p className="w-[343px] md:w-[700px] xxl:w-[1180px] h-[38px] font-bold text-[32px] leading-[120%] text-[#201F24] mx-auto">
+        Overview
+      </p>
     </div>
   );
 }
