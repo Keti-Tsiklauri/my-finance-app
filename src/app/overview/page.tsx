@@ -1,4 +1,6 @@
 import OverviewHeader from "@/components/overview/OverviewHeader";
+import PotsSection from "@/components/overview/PotsSection";
+import TransactionSection from "@/components/overview/TransactionSection";
 
 export default function OverView() {
   return (
@@ -7,6 +9,10 @@ export default function OverView() {
         Overview
       </p>
       <OverviewHeader />
+      <div>
+        <PotsSection />
+        <TransactionSection />
+      </div>
     </div>
   );
 }

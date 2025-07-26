@@ -1,6 +1,6 @@
 "use client";
 import useData from "../../app/hooks/useData";
-
+import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
 export default function PotsTypes() {
@@ -9,25 +9,6 @@ export default function PotsTypes() {
   if (!data) return <p>Loading...</p>;
 
   const { pots } = data;
-  console.log(pots);
-
-  // function that formats 2000 to $2.000
-  function formatDollarWithDot(num: number | string): string {
-    const number = typeof num === "string" ? parseFloat(num) : num;
-    if (isNaN(number)) return "$0";
-
-    return (
-      "$" +
-      Math.floor(number) // remove decimals if any
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-    );
-  }
-
-  // Examples:
-  console.log(formatDollarWithDot(2000)); // "$2.000"
-  console.log(formatDollarWithDot(1234567)); // "$1.234.567"
-  console.log(formatDollarWithDot("9999999")); // "$9.999.999"
 
   return (
     <div className=" xxl:grid grid-cols-2">

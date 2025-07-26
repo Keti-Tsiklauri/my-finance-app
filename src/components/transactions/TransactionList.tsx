@@ -6,14 +6,20 @@ import { formatAmount } from "../helperFunctions/formatAmount";
 interface TransactionListProps {
   transactions: Transaction[];
   currentPage: number;
+  className?: string; // ✅ allows overriding widths
 }
 
 export default function TransactionList({
   transactions,
+  className,
 }: TransactionListProps) {
   return (
-    <div className="w-full max-w-[996px] mx-auto px-4 h-[720px]">
-      {/* Mobile Layout */}
+    <div
+      className={`w-full mx-auto  h-full bg-white rounded-[12px] px-4 py-4 ${
+        className || "xxl:max-w-[996px]"
+      }`}
+    >
+      {/* ✅ Mobile Layout */}
       <div className="md:hidden w-full max-w-[380px] mx-auto">
         {transactions.map((elem, index) => (
           <div
@@ -50,16 +56,18 @@ export default function TransactionList({
         ))}
       </div>
 
-      {/* Desktop Layout */}
-      <div className="hidden md:flex flex-col gap-5 h-[600px]">
+      {/* ✅ Desktop Layout */}
+      <div className="hidden md:flex flex-col gap-5 h-full">
         {transactions.map((elem, index) => (
           <div
             key={index}
-            className="flex items-center gap-8 rounded-[8px] self-stretch
-            md:w-[624px] md:h-[40px] md:p-0
-            xxl:w-[996px] xxl:h-[40px] xxl:px-4 xxl:py-0 mx-auto"
+            className={`flex items-center gap-8 rounded-[8px] self-stretch 
+              md:h-[40px] 
+              xxl:h-[40px] 
+              ${className || "xxl:max-w-[996px]"}`}
           >
-            <div className="flex items-center gap-4 w-[272px] h-[40px] flex-grow p-0 md:w-[272px] xxl:w-[428px]">
+            {/* Avatar + Name */}
+            <div className="flex items-center gap-4 flex-grow min-w-0">
               <Image
                 src={elem.avatar}
                 alt="avatar"
@@ -67,27 +75,27 @@ export default function TransactionList({
                 height={40}
                 className="rounded-full"
               />
-              <p className="font-semibold">{elem.name}</p>
+              <p className="font-semibold truncate">{elem.name}</p>
             </div>
 
-            <div className="flex flex-col justify-center items-start gap-1 h-[18px] w-[80px] md:w-[80px] xxl:w-[120px] flex-none order-1 flex-grow-0">
-              <p className="text-[12px] leading-[18px] font-normal text-[#696868]">
+            {/* Category */}
+            <div className="flex flex-col justify-center items-start gap-1 min-w-[80px] max-w-[120px]">
+              <p className="text-[12px] leading-[18px] font-normal text-[#696868] truncate">
                 {elem.category}
               </p>
             </div>
 
-            <div className="flex flex-col items-start p-0 gap-2 w-[88px] h-[18px] xxl:w-[120px] flex-none order-2 flex-grow-0">
+            {/* Date */}
+            <div className="flex flex-col items-start p-0 gap-2 min-w-[88px] max-w-[120px]">
               <p className="font-sans font-normal text-[12px] leading-[18px] text-[#696868] w-full">
                 {formatDate(elem.date)}
               </p>
             </div>
 
+            {/* Amount */}
             <div
-              className={`flex flex-col justify-center items-end gap-2
-              md:w-[88px] md:h-[21px] xxl:w-[200px] xxl:h-[21px]
-              flex-none order-3 flex-grow-0 ${
-                elem.amount > 0 ? "text-[#277C78]" : "text-[#201F24]"
-              }`}
+              className={`flex flex-col justify-center items-end gap-2 min-w-[88px] max-w-[200px]
+                ${elem.amount > 0 ? "text-[#277C78]" : "text-[#201F24]"}`}
             >
               <p className="font-semibold">{formatAmount(elem.amount)}</p>
             </div>

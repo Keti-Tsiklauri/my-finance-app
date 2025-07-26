@@ -15,3 +15,16 @@ export function formatCurrency(value: number) {
     currency: "USD",
   }).format(value);
 }
+
+// function that formats 2000 to $2.000
+export function formatDollarWithDot(num: number | string): string {
+  const number = typeof num === "string" ? parseFloat(num) : num;
+  if (isNaN(number)) return "$0";
+
+  return (
+    "$" +
+    Math.floor(number) // remove decimals if any
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+  );
+}

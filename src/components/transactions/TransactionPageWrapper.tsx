@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import TransactionList from "./TransactionList";
 import FilterDropDown from "./FilterDropDown";
 import Search from "../shared/search/Search";
-import TransactionListHeader from "./TransactionListHeader";
+
 import useSearch from "../../app/hooks/useSearch";
 import useFilter from "../../app/hooks/useFilter";
 
@@ -79,16 +79,21 @@ export default function TransactionsWrapper() {
           />
         </div>
       </div>
+      <div className="bg-white rounded-[12px]">
+        <div className="w-[343px] md:w-[700px] xxl:w-[1000px]   mx-auto h-[600px] md:h-[600px]">
+          <TransactionList
+            transactions={currentItems}
+            currentPage={currentPage}
+          />
+        </div>
 
-      <TransactionListHeader />
-      <TransactionList transactions={currentItems} currentPage={currentPage} />
-
-      <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalItems={totalItems}
-        itemsPerPage={itemsPerPage}
-      />
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalItems={totalItems}
+          itemsPerPage={itemsPerPage}
+        />
+      </div>
     </>
   );
 }
