@@ -10,11 +10,11 @@ export default function TransactionSection() {
   return (
     <div className="flex flex-col items-start pt-4 w-[343px] h-[400px] md:w-[700px] xxl:w-[600px] bg-white rounded-[12px] mx-auto mt-6">
       <SeeMore section="transactions" action="view all" />
-      <div className=" md:w-[620px] mx-auto">
+      <div className=" md:w-[620px] mx-auto xxl:w-[600px]">
         <TransactionList
           transactions={visibleTransactions}
           currentPage={1}
-          className="xxl:w-[560px] "
+          className="xxl:w-[480px] "
         />
       </div>
     </div>

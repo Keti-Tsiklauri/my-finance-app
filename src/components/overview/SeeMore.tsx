@@ -10,7 +10,7 @@ export default function SeeMore({ section, action }: CardProps) {
       <p className="w-[43px] h-[24px] font-['Public_Sans'] font-bold text-[20px] leading-[120%] text-[#201F24]s">
         {capitalizeEachWord(section)}
       </p>
-      <div className="flex w-[100px] justify-around">
+      <div className="flex w-[100px] justify-around cursor-pointer">
         <p className="h-[21px] font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#696868]">
           {capitalizeEachWord(action)}
         </p>

@@ -17,7 +17,7 @@ type Data = {
   transactions: Transaction[];
 };
 
-export default function SpendingSummary() {
+export default function SpendingSummary({ text }: { text?: string }) {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -38,9 +38,9 @@ export default function SpendingSummary() {
   };
 
   return (
-    <div className="w-[343px] xxl:w-[350px] md:w-[700px] md:mx-auto lg:w-[600px] xl:w-[300px]  mx-auto xl:mx-0 flex flex-col justify-start items-start gap-[32px] bg-white rounded-[12px] flex-none order-0 self-stretch flex-grow-0">
-      <h2 className="w-[189px] h-[24px] font-publicSans font-bold text-[20px]  text-[#201F24] flex-none order-0 flex-grow-0 pb-0">
-        Spending Summary
+    <div className="w-[300px] md:w-[620px] xxl:w-[350px]  md:mx-auto lg:w-[600px] xl:w-[300px]  mx-auto xl:mx-0 flex flex-col justify-start items-start  flex-none order-0 self-stretch flex-grow-0">
+      <h2 className="w-[189px] mb-3 font-publicSans font-bold text-[20px]  text-[#201F24] flex-none order-0 flex-grow-0 pb-0">
+        {text}
       </h2>
       <ul className="w-full">
         {budgets.map((budget) => {

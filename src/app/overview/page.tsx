@@ -1,3 +1,4 @@
+import BudgetsSection from "@/components/overview/BudgetsSection";
 import OverviewHeader from "@/components/overview/OverviewHeader";
 import PotsSection from "@/components/overview/PotsSection";
 import TransactionSection from "@/components/overview/TransactionSection";
@@ -9,9 +10,12 @@ export default function OverView() {
         Overview
       </p>
       <OverviewHeader />
-      <div>
+      {/* <div>
         <PotsSection />
         <TransactionSection />
+      </div> */}
+      <div>
+        <BudgetsSection />
       </div>
     </div>
   );

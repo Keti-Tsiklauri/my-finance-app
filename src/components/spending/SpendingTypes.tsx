@@ -46,7 +46,7 @@ export default function SpendingTypes() {
   const summary = getBudgetSummary();
 
   return (
-    <div className="w-[343px] md:w-[700px] lg:!w-[600px]  mb-[100px] mx-auto  ">
+    <div className="w-[300px] md:w-[620px] lg:!w-[600px]  mb-[100px] mx-auto  ">
       {/* Header */}
 
       {/* Categories and budgets */}
@@ -63,7 +63,7 @@ export default function SpendingTypes() {
         return (
           <div
             key={category}
-            className="mb-10 w-[343px] md:w-[700px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8 "
+            className="mb-10 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8 "
           >
             <CategoryHeader
               color={color}
@@ -73,7 +73,7 @@ export default function SpendingTypes() {
             <p className="text-sm text-gray-500 mb-2">
               Maximum of ${maximum.toFixed(2)}
             </p>
-            <div className="flex items-start p-1 h-[32px] bg-[#F8F4F0] rounded-[4px] mb-2 w-[303px] md:w-[700px] lg:w-[600px]">
+            <div className="flex items-start p-1 h-[32px] bg-[#F8F4F0] rounded-[4px] mb-2 w-[303px] md:w-[620px] lg:w-[600px]">
               <div
                 className="h-full rounded-[4px]"
                 style={{
