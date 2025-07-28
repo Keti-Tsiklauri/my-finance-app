@@ -21,7 +21,7 @@ export default function OverView() {
       <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px]">
         <BudgetsSection />
       </div>
-      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px]">
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px] pb-[20px] mb-[80px] md:mb-[100px] m:mb-[70px]">
         <RecurringBillsSection />
       </div>
     </div>
