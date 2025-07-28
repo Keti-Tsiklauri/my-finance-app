@@ -12,7 +12,7 @@ import { getMonthlyLabel } from "../helperFunctions/getMonthlyLabel";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
 export default function BillsList({ bills }: { bills: Bill[] }) {
   return (
-    <div className="flex flex-col gap-5 w-[300px] mx-auto  md:mt-3  md:w-[700px] xxl:mt-0">
+    <div className="flex flex-col gap-5 w-[300px] mx-auto  md:mt-3  md:w-[660px] xxl:mt-0">
       {bills.map((elem, index) => (
         <div
           key={index}

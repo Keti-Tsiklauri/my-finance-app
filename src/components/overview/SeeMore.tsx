@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface CardProps {
-  section: "pots" | "budgets" | "transactions";
+  section: "pots" | "budgets" | "transactions" | "recurring bills";
   action: "view all" | "see details";
   href: string; // ✅ add URL to navigate to
   width?: string;
@@ -16,7 +16,7 @@ export default function SeeMore({ section, action, width, href }: CardProps) {
       href={safeHref}
       className={`flex flex-row justify-between items-center w-[303px] md:w-[620px] xxl:w-[680px] h-[24px] gap-6 mx-auto bg-white cursor-pointer ${width}`}
     >
-      <p className="w-[43px] h-[24px] font-['Public_Sans'] font-bold text-[20px] leading-[120%] text-[#201F24]">
+      <p className="w-[43px] h-[24px] font-['Public_Sans'] font-bold text-[20px] leading-[120%] text-[#201F24] whitespace-nowrap">
         {capitalizeEachWord(section)}
       </p>
       <div className="flex w-[100px] justify-around">

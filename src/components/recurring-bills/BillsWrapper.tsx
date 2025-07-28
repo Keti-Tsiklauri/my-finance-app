@@ -13,7 +13,7 @@ export default function BillsWrapper({ bills }: { bills: Bill[] }) {
       <div>
         <TotalBills bills={bills} />
       </div>
-      <div>
+      <div className=" bg-white rounded-[12px] p-[24px_20px] w-[343px] mx-auto md:w-[700px]">
         <SearchBills bills={bills} onFilter={setFilteredBills} />
         <RecurringBillsHeader />
         <BillsList bills={filteredBills} />

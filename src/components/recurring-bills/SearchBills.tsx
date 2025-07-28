@@ -42,10 +42,10 @@ export default function SearchBills({ bills, onFilter }: SearchBillsProps) {
   ];
 
   return (
-    <div className="flex justify-around w-[344px] mx-auto mb-4 md:w-[700px] md:justify-between">
+    <div className="flex justify-around  mx-auto mb-4 md:w-[660px] md:justify-between">
       <Search
         placeholder="Search Bills"
-        width="w-[150px] md:w-[320px] xxl:w-[320px]"
+        width="w-[130px] md:w-[320px] xxl:w-[320px]"
         height="h-[35px] md:h-[45px]"
         onSearch={setQuery}
       />
@@ -53,7 +53,7 @@ export default function SearchBills({ bills, onFilter }: SearchBillsProps) {
       <FilterDropDown
         text={sortOption}
         className="w-[80px] md:w-[113px]"
-        divWidth="w-[150px] md:w-[170px]"
+        divWidth="w-[130px] md:w-[170px]"
         filterBased="Sort by"
         filter={[
           { id: 0, name: "Latest" },

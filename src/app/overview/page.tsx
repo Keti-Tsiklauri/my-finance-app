@@ -1,6 +1,7 @@
 import BudgetsSection from "@/components/overview/BudgetsSection";
 import OverviewHeader from "@/components/overview/OverviewHeader";
 import PotsSection from "@/components/overview/PotsSection";
+import RecurringBillsSection from "@/components/overview/RecurringBillsSection";
 import TransactionSection from "@/components/overview/TransactionSection";
 
 export default function OverView() {
@@ -21,6 +22,9 @@ export default function OverView() {
         <div className="mx-auto w-[343px] mt-5 md:w-[700px] bg-white rounded-[12px] flex  items-center ">
           <BudgetsSection />
         </div>
+      </div>
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5">
+        <RecurringBillsSection />
       </div>
     </div>
   );
