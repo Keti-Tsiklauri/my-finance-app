@@ -10,12 +10,17 @@ export default function OverView() {
         Overview
       </p>
       <OverviewHeader />
-      {/* <div>
+
+      <div className=" bg-white rounded-[12px] md:w-[700px] mx-auto xxl:w-[1000px] w-[343px]">
         <PotsSection />
+      </div>
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px]">
         <TransactionSection />
-      </div> */}
-      <div>
-        <BudgetsSection />
+      </div>
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px]">
+        <div className="mx-auto w-[343px] mt-5 md:w-[700px] bg-white rounded-[12px] flex  items-center ">
+          <BudgetsSection />
+        </div>
       </div>
     </div>
   );

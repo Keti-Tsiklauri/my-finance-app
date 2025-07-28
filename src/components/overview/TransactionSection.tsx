@@ -8,14 +8,10 @@ export default function TransactionSection() {
   const { transactions } = data;
   const visibleTransactions = transactions.slice(0, 5);
   return (
-    <div className="flex flex-col items-start pt-4 w-[343px] h-[400px] md:w-[700px] xxl:w-[600px] bg-white rounded-[12px] mx-auto mt-6">
+    <div className="flex flex-col items-start pt-4 w-[343px] h-[400px] md:w-[700px]  bg-white rounded-[12px] mx-auto mt-6 p-[24px_20px]">
       <SeeMore section="transactions" action="view all" />
-      <div className=" md:w-[620px] mx-auto xxl:w-[600px]">
-        <TransactionList
-          transactions={visibleTransactions}
-          currentPage={1}
-          className="xxl:w-[480px] "
-        />
+      <div className=" md:w-[620px] mx-auto ">
+        <TransactionList transactions={visibleTransactions} currentPage={1} />
       </div>
     </div>
   );

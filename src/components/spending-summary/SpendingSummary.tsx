@@ -17,7 +17,13 @@ type Data = {
   transactions: Transaction[];
 };
 
-export default function SpendingSummary({ text }: { text?: string }) {
+export default function SpendingSummary({
+  text,
+  width,
+}: {
+  text?: string;
+  width?: string;
+}) {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
@@ -42,7 +48,7 @@ export default function SpendingSummary({ text }: { text?: string }) {
       <h2 className="w-[189px] mb-3 font-publicSans font-bold text-[20px]  text-[#201F24] flex-none order-0 flex-grow-0 pb-0">
         {text}
       </h2>
-      <ul className="w-full">
+      <ul className={`w-full ${width}`}>
         {budgets.map((budget) => {
           const spent = getSpent(budget.category);
           return (

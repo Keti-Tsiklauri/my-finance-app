@@ -13,7 +13,7 @@ export default function PotsSection() {
   const totalSavings = pots.reduce((acc, pot) => acc + pot.total, 0);
 
   return (
-    <div className="p-[24px_20px] gap-5 w-[343px]  bg-white rounded-[12px] mt-4 mx-auto md:w-[700px] xxl:w-[600px]">
+    <div className="p-[24px_20px] gap-5 w-[343px]  mt-4 mx-auto md:w-[700px] ">
       <SeeMore section="pots" action="see details" />
       <div className="md:flex">
         <div className="flex gap-4 items-center">
