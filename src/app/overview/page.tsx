@@ -18,12 +18,10 @@ export default function OverView() {
       <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px]">
         <TransactionSection />
       </div>
-      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px]">
-        <div className="mx-auto w-[343px] mt-5 md:w-[700px] bg-white rounded-[12px] flex  items-center ">
-          <BudgetsSection />
-        </div>
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px]">
+        <BudgetsSection />
       </div>
-      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5">
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px]">
         <RecurringBillsSection />
       </div>
     </div>

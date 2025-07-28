@@ -15,7 +15,7 @@ export default function TransactionList({
 }: TransactionListProps) {
   return (
     <div
-      className={`w-full mx-auto  h-full bg-white rounded-[12px] px-4 py-4 ${
+      className={`w-full mx-auto  h-full py-4 ${
         className || "xxl:max-w-[996px]"
       }`}
     >

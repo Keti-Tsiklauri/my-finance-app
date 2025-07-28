@@ -79,21 +79,20 @@ export default function TransactionsWrapper() {
           />
         </div>
       </div>
-      <div className="bg-white rounded-[12px] justify-between">
-        <div className="w-[343px] md:w-[700px] xxl:w-[1000px]   mx-auto h-[600px] md:h-[600px]">
+      <div className="bg-white rounded-[12px] justify-between xxl:w-[1000px] mx-auto">
+        <div className="w-[343px] md:w-[700px]    mx-auto h-[600px] md:h-[600px]">
           <TransactionList
             transactions={currentItems}
             currentPage={currentPage}
           />
         </div>
-
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalItems={totalItems}
-          itemsPerPage={itemsPerPage}
-        />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalItems={totalItems}
+        itemsPerPage={itemsPerPage}
+      />
     </>
   );
 }

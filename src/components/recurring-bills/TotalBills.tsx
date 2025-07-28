@@ -4,7 +4,7 @@ import { formatAmount } from "../helperFunctions/formatAmount";
 import useData from "../../app/hooks/useData";
 import Image from "next/image";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
-import { calculateBillData } from "../helperFunctions/billHelpers"; // ✅ import helper
+import { calculateBillData } from "../helperFunctions/billhelpers";
 
 export interface Bill {
   avatar: string;
@@ -48,7 +48,7 @@ export default function TotalBills({ bills }: { bills: Bill[] }) {
       </div>
 
       {/* Summary */}
-      <div className="w-[343px] px-[20px] flex flex-col gap-2   p-[24px_20px]  bg-white rounded-[12px] md:w-[330px]">
+      <div className="w-[343px] px-[20px] flex flex-col gap-1  h-[118px]  p-[10px_20px]  bg-white rounded-[12px] md:w-[330px]">
         <p className="h-[24px] font-bold text-[16px] leading-[150%] text-[#201F24]">
           {capitalizeEachWord("summary")}
         </p>
