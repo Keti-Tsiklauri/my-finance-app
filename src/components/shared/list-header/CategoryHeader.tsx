@@ -30,7 +30,7 @@ export default function CategoryHeader({
 }: CategoryHeaderProps) {
   return (
     <div
-      className={`flex justify-between mt-5 w-[303px] md:w-[620px] m:w-[600px]`}
+      className={`flex justify-between  w-[300px] md:w-[560px] xxl:w-[460px]`}
     >
       <h2 className="flex items-center gap-2 mb-1">
         <Ellipse color={color} />

@@ -15,7 +15,7 @@ export default function PotsTypes() {
       {pots.map((pot, index) => (
         <div
           key={index}
-          className="mb-4 w-[343px] md:w-[700px] xxl:w-[518px] mx-auto gap-8 "
+          className="mb-4 w-[343px] md:w-[600px] xxl:w-[500px] mx-auto gap-8  bg-white rounded-[12px] p-[20px_20px]"
         >
           <CategoryHeader color={pot.theme} category={pot.name} />
           {/* Add more UI below here if needed for target/total */}

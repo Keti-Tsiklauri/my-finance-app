@@ -5,7 +5,9 @@ export default function Pots() {
   return (
     <div>
       <Header text="Pots" />
-      <PotsTypes />
+      <div className="mt-4">
+        <PotsTypes />
+      </div>
     </div>
   );
 }
