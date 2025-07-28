@@ -14,7 +14,7 @@ export default function PotsSection() {
 
   return (
     <div className="p-[24px_20px] gap-5 w-[343px]  mt-4 mx-auto md:w-[700px] ">
-      <SeeMore section="pots" action="see details" />
+      <SeeMore section="pots" action="see details" href="/pots" />
       <div className="md:flex">
         <div className="flex gap-4 items-center">
           <Image
