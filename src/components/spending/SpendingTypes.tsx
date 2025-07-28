@@ -4,6 +4,7 @@ import Image from "next/image";
 import { formatAmount } from "../helperFunctions/formatAmount";
 import { formatDate } from "../helperFunctions/formatDate";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
+
 function Ellipse({ color }: { color: string }) {
   return (
     <div
@@ -19,20 +20,28 @@ function Ellipse({ color }: { color: string }) {
   );
 }
 
+// ✅ Reusable Loader
+function Loader() {
+  return (
+    <div className="flex justify-center items-center h-[200px]">
+      <div className="w-12 h-12 border-4 border-[#277C78] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
 export default function SpendingTypes() {
   const data = useData();
 
-  if (!data) return <p>Loading...</p>;
+  // ✅ Show loader while fetching
+  if (!data) return <Loader />;
 
   const { transactions, budgets } = data;
 
-  // Helper functions
   const getThemeColor = (category: string) => {
     const budget = budgets.find((b) => b.category === category);
     return budget ? budget.theme : "#000";
   };
 
-  // Calculate spent and free per category
   function getBudgetSummary() {
     return budgets.map(({ category, maximum }) => {
       const spent = transactions
@@ -46,24 +55,20 @@ export default function SpendingTypes() {
   const summary = getBudgetSummary();
 
   return (
-    <div className="w-[300px] md:w-[620px] lg:!w-[600px]  mb-[100px] mx-auto  ">
-      {/* Header */}
-
-      {/* Categories and budgets */}
+    <div className="w-[300px] md:w-[620px] lg:!w-[600px] mb-[100px] mx-auto">
       {summary.map(({ category, spent, free, maximum }) => {
         const color = getThemeColor(category);
-        // Filter transactions for this category to show items
         const items = transactions
           .filter((t) => t.category === category)
           .sort(
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
           )
-          .slice(0, 3); // 👈 Only take 3 most recent
+          .slice(0, 3);
 
         return (
           <div
             key={category}
-            className="mb-10 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8 "
+            className="mb-10 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8"
           >
             <CategoryHeader
               color={color}
@@ -104,6 +109,7 @@ export default function SpendingTypes() {
                 </p>
               </div>
             </div>
+
             <div className="flex justify-between items-center mb-4">
               <p className="w-[126px] h-[24px] font-public-sans font-bold text-[16px] leading-[1.5] text-[#201F24]">
                 Latest Spending
@@ -120,6 +126,7 @@ export default function SpendingTypes() {
                 />
               </div>
             </div>
+
             {items.map((item, index) => (
               <div key={index} className="mb-2">
                 <div className="flex justify-between items-center">

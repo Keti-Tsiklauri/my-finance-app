@@ -9,6 +9,15 @@ import Search from "../shared/search/Search";
 import useSearch from "../../app/hooks/useSearch";
 import useFilter from "../../app/hooks/useFilter";
 
+// ✅ Reusable Loader Component
+function Loader() {
+  return (
+    <div className="flex justify-center items-center h-[400px]">
+      <div className="w-12 h-12 border-4 border-[#277C78] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
 export default function TransactionsWrapper() {
   const data = useData();
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +37,8 @@ export default function TransactionsWrapper() {
     setCurrentPage(1);
   }, [query, sortOption, category]);
 
-  if (!data) return <p>Loading...</p>;
+  // ✅ Show loader while fetching data
+  if (!data) return <Loader />;
 
   const categories = [
     { id: -1, name: "All" },
@@ -46,6 +56,7 @@ export default function TransactionsWrapper() {
 
   return (
     <>
+      {/* Search & Filters */}
       <div className="flex justify-between xxl:w-[1000px] mx-auto mb-[20px] mt-[20px] w-[343px] md:w-[620px]">
         <Search
           placeholder="Search Transaction"
@@ -79,14 +90,18 @@ export default function TransactionsWrapper() {
           />
         </div>
       </div>
+
+      {/* Transaction List */}
       <div className="bg-white rounded-[12px] justify-between xxl:w-[1000px] mx-auto">
-        <div className="w-[343px] md:w-[700px]    mx-auto h-[600px] md:h-[600px]">
+        <div className="w-[343px] md:w-[700px] mx-auto h-[600px] md:h-[600px]">
           <TransactionList
             transactions={currentItems}
             currentPage={currentPage}
           />
         </div>
       </div>
+
+      {/* Pagination */}
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

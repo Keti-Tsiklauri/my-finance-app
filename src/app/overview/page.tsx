@@ -15,7 +15,7 @@ export default function OverView() {
       <div className=" bg-white rounded-[12px] md:w-[700px] mx-auto xxl:w-[1000px] w-[343px]">
         <PotsSection />
       </div>
-      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px]">
+      <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5">
         <TransactionSection />
       </div>
       <div className=" bg-white rounded-[12px] xxl:w-[1000px] mx-auto md:w-[700px] w-[343px] mt-5 pt-[16px]">

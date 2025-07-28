@@ -3,22 +3,31 @@ import useData from "../../app/hooks/useData";
 import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
+
+function Loader() {
+  return (
+    <div className="flex justify-center items-center h-[200px]">
+      <div className="w-12 h-12 border-4 border-[#277C78] border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
 export default function PotsTypes() {
   const data = useData();
 
-  if (!data) return <p>Loading...</p>;
+  if (!data) return <Loader />;
 
   const { pots } = data;
 
   return (
-    <div className=" xxl:grid grid-cols-2">
+    <div className="xxl:grid grid-cols-2 gap-6">
       {pots.map((pot, index) => (
         <div
           key={index}
-          className="mb-4 w-[343px] md:w-[600px] xxl:w-[500px] mx-auto gap-8  bg-white rounded-[12px] p-[20px_20px]"
+          className="mb-4 w-[343px] md:w-[600px] xxl:w-[500px] mx-auto gap-8 bg-white rounded-[12px] p-[20px_20px]"
         >
           <CategoryHeader color={pot.theme} category={pot.name} />
-          {/* Add more UI below here if needed for target/total */}
+          {/* Total Saved */}
           <div className="flex items-center justify-between">
             <p className="h-[21px] font-normal text-[14px] leading-[21px] text-[#696868]">
               Total Saved
@@ -28,8 +37,8 @@ export default function PotsTypes() {
             </p>
           </div>
 
-          {/* progress bar */}
-          <div className=" h-[8px] bg-[#F8F4F0] rounded-[4px] flex">
+          {/* Progress bar */}
+          <div className="h-[8px] bg-[#F8F4F0] rounded-[4px] flex">
             <div
               className="h-full rounded-[4px]"
               style={{
@@ -40,7 +49,6 @@ export default function PotsTypes() {
           </div>
 
           <div className="flex justify-between">
-            {" "}
             <p className="h-[18px] font-public-sans font-bold text-[12px] leading-[150%] text-[#696868]">
               {calculatePercentage(pot.total, pot.target)}%
             </p>
@@ -49,25 +57,31 @@ export default function PotsTypes() {
             </p>
           </div>
 
-          {/* buttons */}
+          {/* Buttons */}
           <div className="flex justify-around mt-6">
             <button
-              className=" 
-    w-[140px]  md:w-[300px] xxl:w-[220px] h-[53px]
-    bg-[#F8F4F0]
-    rounded-lg
-     cursor-pointer"
+              className="
+                w-[140px] md:w-[300px] xxl:w-[220px] h-[53px]
+                bg-[#F8F4F0]
+                rounded-lg
+                cursor-pointer
+                hover:bg-[#e2dedc]
+                transition-colors duration-200
+              "
             >
               + Add Money
             </button>
             <button
-              className="  w-[140px]
-    md:w-[300px] h-[53px] xxl:w-[220px]
-    bg-[#F8F4F0]
-    rounded-lg
-     cursor-pointer"
+              className="
+                w-[140px] md:w-[300px] h-[53px] xxl:w-[220px]
+                bg-[#F8F4F0]
+                rounded-lg
+                cursor-pointer
+                hover:bg-[#e2dedc]
+                transition-colors duration-200
+              "
             >
-              Withdrow
+              Withdraw
             </button>
           </div>
         </div>
