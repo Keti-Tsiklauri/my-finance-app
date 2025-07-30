@@ -1,4 +1,4 @@
-import Header from "@/components/shared/headers/Header";
+import Header from "@/components/shared/headers/BudgetsHeader";
 import PotsTypes from "@/components/pots-types/PotsTypes";
 
 export default function Pots() {

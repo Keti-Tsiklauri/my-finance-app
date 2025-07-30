@@ -29,9 +29,7 @@ export default function CategoryHeader({
   className = "",
 }: CategoryHeaderProps) {
   return (
-    <div
-      className={`flex justify-between  w-[300px] md:w-[560px] xxl:w-[460px]`}
-    >
+    <div className={`flex justify-between  w-[300px] md:w-[600px] `}>
       <h2 className="flex items-center gap-2 mb-1">
         <Ellipse color={color} />
         <p className="h-[24px] font-public-sans font-extrabold text-[20px] leading-[1.2] text-gray-900">
@@ -39,6 +37,7 @@ export default function CategoryHeader({
         </p>
       </h2>
       <Image
+        className="cursor-pointer"
         src="/images/budgets/spread.svg"
         alt="more"
         width={14}

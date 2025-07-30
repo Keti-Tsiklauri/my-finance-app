@@ -123,6 +123,7 @@ export default function SpendingTypes() {
                   alt="down-fill"
                   width={12}
                   height={12}
+                  className="cursor-pointer"
                 />
               </div>
             </div>
