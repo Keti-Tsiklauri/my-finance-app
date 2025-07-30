@@ -3,15 +3,7 @@ import useData from "../../app/hooks/useData";
 import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
-
-function Loader() {
-  return (
-    <div className="flex justify-center items-center h-[200px]">
-      <div className="w-12 h-12 border-4 border-[#277C78] border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  );
-}
-
+import Loader from "../modals/Loader";
 export default function PotsTypes() {
   const data = useData();
 
