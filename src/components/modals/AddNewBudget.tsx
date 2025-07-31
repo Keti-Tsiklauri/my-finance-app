@@ -21,7 +21,7 @@ export default function AddNewBudget({
 }) {
   const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
   return (
-    <div className="flex flex-col mx-auto mt-5 w-[335px] md:w-[560px] h-[510px] bg-white rounded-[12px] p-[24px_20px] gap-5">
+    <div className="flex flex-col mx-auto  w-[335px] md:w-[560px] h-[450px] md:h-[510px] bg-white rounded-[12px] p-[24px_20px] gap-3 md:gap-5">
       <div className="flex justify-between md:w-[496px] w-[295px] ">
         <p className="h-[38px] font-['Public_Sans'] font-bold text-[32px] leading-[120%] text-[#201F24]">
           {text}

@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ColorPicker from "./ColorPicker";
 
 interface SelectedColor {
@@ -12,20 +12,48 @@ interface SelectedColor {
 interface ThemeProps {
   selectedColor: SelectedColor;
   text: string;
-  onChange: (color: SelectedColor) => void; // callback for parent
+  onChange: (color: SelectedColor) => void;
 }
 
 export default function Theme({ selectedColor, text, onChange }: ThemeProps) {
   const [open, setOpen] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
+
+  const updatePosition = () => {
+    if (boxRef.current) {
+      const rect = boxRef.current.getBoundingClientRect();
+      setPosition({ top: rect.bottom + 4, left: rect.left, width: rect.width });
+    }
+  };
+
+  useEffect(() => {
+    if (open) updatePosition();
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleResize = () => updatePosition();
+    const handleScroll = () => updatePosition();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll, true);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll, true);
+    };
+  }, [open]);
 
   return (
-    <div className="relative">
+    <div className="flex flex-col">
       <p className="h-[18px] font-['Public_Sans'] font-bold text-[12px] leading-[150%] text-[#696868]">
         {capitalizeEachWord(text)}
       </p>
 
-      {/* InfoBox-style theme selector */}
       <div
+        ref={boxRef}
         className="flex flex-row items-center justify-between p-[12px_20px] gap-4 
         w-[295px] md:w-[496px] h-[45px] bg-white border border-[#98908B] rounded-[8px] box-border cursor-pointer"
         onClick={() => setOpen(!open)}
@@ -47,11 +75,17 @@ export default function Theme({ selectedColor, text, onChange }: ThemeProps) {
         />
       </div>
 
-      {/* ✅ Dropdown with ColorPicker */}
       {open && (
-        <div className="absolute top-[60px] left-0 z-20">
-          <ColorPickerWrapper
-            onSelect={(color) => {
+        <div
+          className="fixed z-50"
+          style={{
+            top: position.top,
+            left: position.left,
+            width: position.width,
+          }}
+        >
+          <ColorPicker
+            onPick={(color) => {
               onChange(color);
               setOpen(false);
             }}
@@ -59,28 +93,5 @@ export default function Theme({ selectedColor, text, onChange }: ThemeProps) {
         </div>
       )}
     </div>
-  );
-}
-
-/* ✅ Wrapper to handle clicks from ColorPicker */
-function ColorPickerWrapper({
-  onSelect,
-}: {
-  onSelect: (c: SelectedColor) => void;
-}) {
-  const themes = [
-    { theme: "#277C78", text: "green" },
-    { theme: "#82C9D7", text: "cyan" },
-    { theme: "#F2CDAC", text: "yellow" },
-    { theme: "#626070", text: "navy" },
-    { theme: "#C94736", text: "red" },
-    { theme: "#826CB0", text: "purple" },
-    { theme: "#597C7C", text: "turquoise" },
-  ];
-
-  return (
-    <ColorPicker
-      onPick={(theme) => onSelect(theme)} // modify ColorPicker to support this
-    />
   );
 }

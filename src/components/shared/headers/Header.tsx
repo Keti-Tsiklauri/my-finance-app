@@ -26,18 +26,28 @@ export default function Header({ type }: { type: "budget" | "pot" }) {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          {type === "budget" ? (
-            <AddNewBudget
-              text="add new budget"
-              description="Choose a category to set a spending budget. These categories can help you monitor spending."
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-              onClose={closeModal}
-            />
-          ) : (
-            <AddNewPot />
-          )}
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-start justify-center z-50 overflow-y-auto">
+          <div className="md:mt-12 mt-2">
+            {" "}
+            {/* push modal down slightly */}
+            {type === "budget" ? (
+              <AddNewBudget
+                text="add new budget"
+                description="Choose a category to set a spending budget. These categories can help you monitor spending."
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                onClose={closeModal}
+              />
+            ) : (
+              <AddNewPot
+                text="add new pot"
+                description="Create a pot to set savings targets. These can help keep you on track as you save for special purchases."
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                onClose={closeModal}
+              />
+            )}
+          </div>
         </div>
       )}
     </>

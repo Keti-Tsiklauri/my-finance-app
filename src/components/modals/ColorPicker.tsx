@@ -24,7 +24,7 @@ export default function ColorPicker({
   ];
 
   return (
-    <div className="md:w-[496px] w-[295px] bg-white rounded-[12px] p-[24px_20px] flex flex-col gap-2 mx-auto h-[300px] overflow-y-scroll shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
+    <div className="md:w-[496px] w-[295px] bg-white rounded-[12px] p-[24px_20px] flex flex-col gap-2 mx-auto h-[200px] md:h-[300px] overflow-y-scroll shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
       {themeArray.map((elem, index) => {
         const isUsed = budgets.some(
           (budget: { theme: string }) =>
