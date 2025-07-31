@@ -3,11 +3,5 @@ import ColorPicker from "@/components/modals/ColorPicker";
 import AddNewBudget from "@/components/modals/AddNewBudget";
 import Delete from "@/components/modals/Delete";
 export default function Home() {
-  return (
-    <div>
-      <Delete text="budget" type="entertainment" />
-
-      <ColorPicker />
-    </div>
-  );
+  return <div></div>;
 }

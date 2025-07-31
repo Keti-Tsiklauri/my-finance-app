@@ -5,7 +5,7 @@ import AddButton from "../add-button/AddButton";
 import Theme from "./Theme";
 import AmountPicker from "./AmountPicker";
 import InfoBox from "./InfoBox";
-
+import { useState } from "react";
 export default function AddNewBudget({
   text,
   description,
@@ -19,6 +19,7 @@ export default function AddNewBudget({
   setSelectedCategory: (value: string) => void;
   onClose: () => void;
 }) {
+  const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
   return (
     <div className="flex flex-col mx-auto mt-5 w-[335px] md:w-[560px] h-[510px] bg-white rounded-[12px] p-[24px_20px] gap-5">
       <div className="flex justify-between md:w-[496px] w-[295px] ">
@@ -48,7 +49,7 @@ export default function AddNewBudget({
 
       {/* other inputs */}
       <AmountPicker text="maximum spending" />
-      <Theme selectedColor={{ color: "277C78", text: "green" }} text="theme" />
+      <Theme selectedColor={theme} text="theme" onChange={setTheme} />
 
       {/* Add Budget button */}
       <div className="md:w-[496px] w-[295px] mt-auto">

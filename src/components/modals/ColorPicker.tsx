@@ -3,9 +3,12 @@
 import Loader from "./Loader";
 import useData from "@/app/hooks/useData";
 
-export default function ColorPicker() {
+export default function ColorPicker({
+  onPick,
+}: {
+  onPick?: (c: { theme: string; text: string }) => void;
+}) {
   const data = useData();
-
   if (!data) return <Loader />;
 
   const { budgets } = data;
@@ -21,13 +24,7 @@ export default function ColorPicker() {
   ];
 
   return (
-    <div
-      className="
-        md:w-[496px] w-[295px] bg-white rounded-[12px]
-        p-[24px_20px] flex flex-col gap-2 mx-auto
-        h-[300px] overflow-y-scroll shadow-[0_4px_24px_rgba(0,0,0,0.25)]
-      "
-    >
+    <div className="md:w-[496px] w-[295px] bg-white rounded-[12px] p-[24px_20px] flex flex-col gap-2 mx-auto h-[300px] overflow-y-scroll shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
       {themeArray.map((elem, index) => {
         const isUsed = budgets.some(
           (budget: { theme: string }) =>
@@ -35,7 +32,11 @@ export default function ColorPicker() {
         );
 
         return (
-          <div key={index}>
+          <div
+            key={index}
+            className="cursor-pointer"
+            onClick={() => onPick && onPick(elem)} // ✅ call onPick
+          >
             <div className="flex items-center w-[255px] md:w-[456px] justify-between">
               <div className="flex gap-2 items-center">
                 <div
