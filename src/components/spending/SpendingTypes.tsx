@@ -68,7 +68,7 @@ export default function SpendingTypes() {
         return (
           <div
             key={category}
-            className="mb-10 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8"
+            className="mb-10 pb-4 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8"
           >
             <CategoryHeader
               color={color}

@@ -57,7 +57,7 @@ export default function TransactionsWrapper() {
   return (
     <>
       {/* Search & Filters */}
-      <div className="flex justify-between xxl:w-[1000px] mx-auto mb-[20px] mt-[20px] w-[343px] md:w-[620px]">
+      <div className="flex justify-between xxl:w-[1000px] mx-auto mb-[20px] mt-[20px] w-[343px] md:w-[700px]">
         <Search
           placeholder="Search Transaction"
           width="w-[100px] md:w-[160px] xxl:w-[320px]"
