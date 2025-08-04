@@ -12,11 +12,11 @@ export default function PotsTypes() {
   const { pots } = data;
 
   return (
-    <div className="xxl:grid grid-cols-2 gap-6   mx-auto">
+    <div className="  mx-auto">
       {pots.map((pot, index) => (
         <div
           key={index}
-          className="mb-4  w-[343px] md:w-[700px] mx-auto  gap-8 bg-white rounded-[12px] p-[20px_20px]"
+          className="mb-4  w-[343px] md:w-[700px] mx-auto   gap-8 bg-white rounded-[12px] p-[20px_20px]"
         >
           {/* Total Saved */}
           <div className="mx-auto w-[300px] md:w-[600px]">
