@@ -6,16 +6,20 @@ import AddButton from "../add-button/AddButton";
 import Theme from "./Theme";
 import AmountPicker from "./AmountPicker";
 import { GlobalContext } from "../context/GlobalContext";
-
+type AddNewPotProps = {
+  text: string;
+  description: string;
+  onClose: () => void;
+  selectedCategory: string;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+};
 export default function AddNewPot({
   text,
   description,
   onClose,
-}: {
-  text: string;
-  description: string;
-  onClose: () => void;
-}) {
+  selectedCategory,
+  setSelectedCategory,
+}: AddNewPotProps) {
   const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
   const [amount, setAmount] = useState("");
   const [potName, setPotName] = useState("");

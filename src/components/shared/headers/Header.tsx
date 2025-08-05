@@ -11,7 +11,9 @@ export default function Header({ type }: { type: "budget" | "pot" }) {
   const [showModal, setShowModal] = useState(false);
 
   // Keep category outside modal so it persists
-  const [selectedCategory, setSelectedCategory] = useState("entertainment");
+  const [selectedCategory, setSelectedCategory] = useState(
+    capitalizeEachWord("entertainment")
+  );
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);

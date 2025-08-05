@@ -7,20 +7,20 @@ import AmountPicker from "./AmountPicker";
 import InfoBox from "./InfoBox";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { GlobalContext, GlobalDataProvider } from "../context/GlobalContext";
-
+type AddNewBudgetProps = {
+  text: string;
+  description: string;
+  onClose: () => void;
+  selectedCategory: string;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+};
 export default function AddNewBudget({
   text,
   description,
+  onClose,
   selectedCategory,
   setSelectedCategory,
-  onClose,
-}: {
-  text: string;
-  description: string;
-  selectedCategory: string;
-  setSelectedCategory: (value: string) => void;
-  onClose: () => void;
-}) {
+}: AddNewBudgetProps) {
   const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
   const [amount, setAmount] = useState("");
 
