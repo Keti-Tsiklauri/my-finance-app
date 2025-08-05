@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Loader from "../modals/Loader";
 
@@ -17,13 +17,14 @@ type Transaction = {
 export default function SpendingSummary({
   text = "Spending Summary",
   width = "w-full",
+  limit,
 }: {
   text?: string;
   width?: string;
+  limit?: number; // optional limit on how many budgets to show
 }) {
   const { data } = useContext(GlobalContext);
 
-  // ✅ Show loader while data is loading
   if (!data) return <Loader />;
 
   const { budgets, transactions } = data;
@@ -34,6 +35,10 @@ export default function SpendingSummary({
       .reduce((sum, tx) => sum + Math.abs(tx.amount), 0);
   };
 
+  // If limit is defined, slice budgets; else show all
+  const budgetsToShow =
+    typeof limit === "number" ? budgets.slice(0, limit) : budgets;
+
   return (
     <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px] xxl:w-[440px]">
       <div className="w-[300px] md:w-[620px] xxl:w-[350px] md:mx-auto lg:w-[600px] xl:w-[300px] mx-auto xl:mx-0 flex flex-col justify-start items-start">
@@ -41,7 +46,7 @@ export default function SpendingSummary({
           {text}
         </h2>
         <ul className={`${width} w-full`}>
-          {budgets.map((budget) => {
+          {budgetsToShow.map((budget) => {
             const spent = getSpent(budget.category);
             return (
               <li

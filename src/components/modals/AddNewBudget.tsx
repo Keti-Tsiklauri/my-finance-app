@@ -53,7 +53,7 @@ export default function AddNewBudget({
         maximum: Number(amount),
         theme: theme.theme,
       };
-      updatedBudgets = [...data.budgets, newBudget];
+      updatedBudgets = [newBudget, ...data.budgets];
     }
 
     const updatedData = { ...data, budgets: updatedBudgets };

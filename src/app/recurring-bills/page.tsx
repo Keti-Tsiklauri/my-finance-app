@@ -2,15 +2,6 @@
 
 import BillsWrapper from "@/components/recurring-bills/BillsWrapper";
 
-// ✅ Shared loader
-function Loader() {
-  return (
-    <div className="flex justify-center items-center h-[120px]">
-      <div className="w-12 h-12 border-4 border-[#277C78] border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  );
-}
-
 export default function RecurringBills() {
   return (
     <div>

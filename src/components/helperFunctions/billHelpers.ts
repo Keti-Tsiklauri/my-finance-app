@@ -31,9 +31,6 @@ export function calculateBillData(bills: Bill[], soonThreshold = 7) {
   const totalDueSoon = dueSoonBills.reduce((sum, b) => sum + b.amount, 0);
   const dueSoonCount = dueSoonBills.length;
 
-  console.log({ totalPaid, totalUpcoming, totalDueSoon });
-  console.log("bills", bills);
-
   return {
     totalBills,
     paidBills,

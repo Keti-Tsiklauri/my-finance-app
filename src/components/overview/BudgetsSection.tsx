@@ -6,7 +6,7 @@ export default function BudgetsSection() {
     <div className="flex flex-col   ">
       <SeeMore section="budgets" action="see details" href="/budgets" />
 
-      <SpendingSummary />
+      <SpendingSummary limit={4} />
     </div>
   );
 }

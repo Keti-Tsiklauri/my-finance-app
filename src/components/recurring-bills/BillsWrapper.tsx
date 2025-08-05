@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useMemo } from "react";
 import TotalBills from "./TotalBills";
 import SearchBills from "./SearchBills";
 import RecurringBillsHeader from "./RecurringBillsHeader";
@@ -9,8 +9,19 @@ import Loader from "../modals/Loader";
 export default function BillsWrapper() {
   const { data } = useContext(GlobalContext);
   if (!data) return <Loader />;
-  const bills = data.transactions.filter((t) => t.category === "Bills");
+
+  // Memoize bills so it doesn't change on every render
+  const bills = useMemo(
+    () => data.transactions.filter((t) => t.category === "Bills"),
+    [data.transactions]
+  );
+
   const [filteredBills, setFilteredBills] = useState<Bill[]>(bills);
+
+  // Also sync filteredBills when bills changes (optional, depending on UX)
+  useEffect(() => {
+    setFilteredBills(bills);
+  }, [bills]);
 
   return (
     <div className="flex flex-col xxl:flex-row gap-8 mt-6 xxl:w-[1100px] xxl:mx-auto">

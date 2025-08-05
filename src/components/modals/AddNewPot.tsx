@@ -1,33 +1,68 @@
 "use client";
-import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
+import { useState, useContext } from "react";
 import Image from "next/image";
+import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import AddButton from "../add-button/AddButton";
 import Theme from "./Theme";
 import AmountPicker from "./AmountPicker";
-import InfoBox from "./InfoBox";
-import { useState } from "react";
-export default function AddNewოტ({
+import { GlobalContext } from "../context/GlobalContext";
+
+export default function AddNewPot({
   text,
   description,
-  selectedCategory,
-  setSelectedCategory,
   onClose,
 }: {
   text: string;
   description: string;
-  selectedCategory: string;
-  setSelectedCategory: (value: string) => void;
   onClose: () => void;
 }) {
   const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
+  const [amount, setAmount] = useState("");
+  const [potName, setPotName] = useState("");
+
+  const { data, setData } = useContext(GlobalContext);
+
+  const handleAddPot = () => {
+    if (!data || !potName.trim() || !amount) return;
+
+    const formattedName = capitalizeEachWord(potName.trim());
+
+    const existingIndex = data.pots.findIndex(
+      (p) => p.name.toLowerCase() === formattedName.toLowerCase()
+    );
+
+    let updatedPots;
+
+    if (existingIndex !== -1) {
+      // Pot exists → update target
+      updatedPots = [...data.pots];
+      updatedPots[existingIndex].target += Number(amount);
+    } else {
+      // Pot doesn't exist → add new at top
+      const newPot = {
+        name: formattedName,
+        target: Number(amount),
+        total: 0,
+        theme: theme.theme,
+      };
+      updatedPots = [newPot, ...data.pots];
+    }
+
+    const updatedData = { ...data, pots: updatedPots };
+    setData(updatedData);
+    localStorage.setItem("finance-data", JSON.stringify(updatedData));
+    onClose();
+  };
+
   return (
-    <div className="flex flex-col mx-auto mt-5 w-[335px] md:w-[560px] h-[450px] md:h-[510px] bg-white rounded-[12px] p-[24px_20px] gap-3 md:gap-5">
-      <div className="flex justify-between md:w-[496px] w-[295px] ">
-        <p className="h-[38px] font-['Public_Sans'] font-bold text-[32px] leading-[120%] text-[#201F24]">
+    <div className="flex flex-col mx-auto mt-5 w-[335px] md:w-[560px] bg-white rounded-[12px] p-[24px_20px] gap-3 md:gap-5">
+      {/* Header */}
+      <div className="flex justify-between w-full">
+        <p className="font-['Public_Sans'] font-bold text-[32px] text-[#201F24]">
           {text}
         </p>
         <Image
-          src="images/modals/close.svg"
+          src="/images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}
@@ -36,32 +71,37 @@ export default function AddNewოტ({
         />
       </div>
 
-      <p className="font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#696868]">
-        {description}
-      </p>
+      <p className="text-[14px] text-[#696868]">{description}</p>
+
+      {/* Pot Name Input */}
       <div>
-        <p className="h-[18px] font-['Public_Sans'] font-bold text-[12px] leading-[150%] text-[#696868]">
+        <p className="text-[12px] font-bold text-[#696868]">
           {capitalizeEachWord("pot name")}
         </p>
-        <div
-          className="flex flex-row items-center 
-        p-[12px_20px] gap-3  w-[295px] md:w-[496px] h-[45px] bg-white border border-[#98908B] rounded-[8px] box-border"
-        >
+        <div className="flex items-center px-5 py-3 border border-[#98908B] rounded-[8px] w-full">
           <input
             type="text"
             placeholder="Concert Ticket"
-            className="h-[21px] w-[233px] font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#201F24] placeholder-[#98908B] bg-transparent outline-none border-none"
+            value={potName}
+            onChange={(e) => setPotName(e.target.value)}
+            className="w-full bg-transparent text-[14px] text-[#201F24] placeholder-[#98908B] outline-none"
           />
         </div>
       </div>
 
-      {/* other inputs */}
-      <AmountPicker text="target" />
+      {/* Amount Picker */}
+      <AmountPicker
+        text="maximum spending"
+        value={amount}
+        onChange={setAmount}
+      />
+
+      {/* Theme Picker */}
       <Theme selectedColor={theme} text="theme" onChange={setTheme} />
 
-      {/* Add Budget button */}
-      <div className="md:w-[496px] w-[295px] mt-auto">
-        <AddButton text="add budget" width="w-[295px] md:w-[496px]" />
+      {/* Add Button */}
+      <div className="w-full mt-auto" onClick={handleAddPot}>
+        <AddButton text="add pot" width="w-full" />
       </div>
     </div>
   );

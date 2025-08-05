@@ -1,28 +1,41 @@
 "use client";
-
-import { formatDollarWithDot } from "../helperFunctions/formatAmount";
+import { useContext, useState } from "react";
+import Delete from "../modals/Delete"; // your Delete component
 import CategoryHeader from "../shared/list-header/CategoryHeader";
-import { calculatePercentage } from "../helperFunctions/calculatePercentage";
 import Loader from "../modals/Loader";
-import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
+import { formatDollarWithDot } from "../helperFunctions/formatAmount";
+import { calculatePercentage } from "../helperFunctions/calculatePercentage";
+
 export default function PotsTypes() {
-  const { data } = useContext(GlobalContext);
+  const { data, setData } = useContext(GlobalContext);
+  const [deleteIndex, setDeleteIndex] = useState<number | null>(null);
 
   if (!data) return <Loader />;
 
   const { pots } = data;
 
+  const deletePot = (index: number) => {
+    const updatedPots = pots.filter((_, i) => i !== index);
+    const updatedData = { ...data, pots: updatedPots };
+    setData(updatedData);
+    localStorage.setItem("finance-data", JSON.stringify(updatedData));
+    setDeleteIndex(null);
+  };
+
   return (
-    <div className="  mx-auto">
+    <div className="mx-auto">
       {pots.map((pot, index) => (
         <div
           key={index}
-          className="mb-4  w-[343px] md:w-[700px] mx-auto   gap-8 bg-white rounded-[12px] p-[20px_20px]"
+          className="mb-4 w-[343px] md:w-[700px] mx-auto gap-8 bg-white rounded-[12px] p-[20px_20px]"
         >
-          {/* Total Saved */}
           <div className="mx-auto w-[300px] md:w-[600px]">
-            <CategoryHeader color={pot.theme} category={pot.name} />
+            <CategoryHeader
+              color={pot.theme}
+              category={pot.name}
+              onMenuClick={() => setDeleteIndex(index)} // Show delete modal on click
+            />
             <div className="flex items-center justify-between ">
               <p className="h-[21px] font-normal text-[14px] leading-[21px] text-[#696868]">
                 Total Saved
@@ -52,6 +65,7 @@ export default function PotsTypes() {
               </p>
             </div>
           </div>
+
           {/* Buttons */}
           <div className="flex justify-between mt-6 w-[300px] md:w-[600px] mx-auto">
             <button
@@ -79,6 +93,17 @@ export default function PotsTypes() {
               Withdraw
             </button>
           </div>
+
+          {/* Show Delete modal only for selected pot */}
+          {deleteIndex === index && (
+            <Delete
+              text={pot.name}
+              type="pot"
+              // Add your own onConfirm and onCancel handlers here:
+              onConfirm={() => deletePot(index)}
+              onCancel={() => setDeleteIndex(null)}
+            />
+          )}
         </div>
       ))}
     </div>
