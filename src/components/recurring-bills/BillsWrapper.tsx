@@ -1,11 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TotalBills from "./TotalBills";
 import SearchBills from "./SearchBills";
 import RecurringBillsHeader from "./RecurringBillsHeader";
 import BillsList, { Bill } from "./BillsList";
-
-export default function BillsWrapper({ bills }: { bills: Bill[] }) {
+import { GlobalContext } from "../context/GlobalContext";
+import Loader from "../modals/Loader";
+export default function BillsWrapper() {
+  const { data } = useContext(GlobalContext);
+  if (!data) return <Loader />;
+  const bills = data.transactions.filter((t) => t.category === "Bills");
   const [filteredBills, setFilteredBills] = useState<Bill[]>(bills);
 
   return (

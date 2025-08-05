@@ -1,7 +1,9 @@
 "use client";
 import TransactionList from "@/components/transactions/TransactionList";
-import useData from "@/app/hooks/useData";
+
 import SeeMore from "./SeeMore";
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 // ✅ Reusable loader (same style as others)
 function Loader() {
@@ -13,7 +15,7 @@ function Loader() {
 }
 
 export default function TransactionSection() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching
   if (!data) return <Loader />;

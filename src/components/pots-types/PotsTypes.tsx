@@ -1,11 +1,13 @@
 "use client";
-import useData from "../../app/hooks/useData";
+
 import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
 import Loader from "../modals/Loader";
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 export default function PotsTypes() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   if (!data) return <Loader />;
 

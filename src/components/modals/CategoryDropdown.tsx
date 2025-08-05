@@ -1,13 +1,14 @@
 "use client";
+import { useContext } from "react";
 import Loader from "./Loader";
-import useData from "@/app/hooks/useData";
+import { GlobalContext } from "../context/GlobalContext";
 
 export default function CategoryDropdown({
   onSelect,
 }: {
   onSelect: (val: string) => void;
 }) {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
   if (!data) return <Loader />;
 
   const { transactions } = data;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import { GlobalDataProvider } from "@/components/context/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +20,9 @@ export default function RootLayout({
         <Navigation />
 
         {/* Main content scrollable */}
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <GlobalDataProvider>
+          <main className="flex-1 overflow-y-auto">{children}</main>
+        </GlobalDataProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import useData from "../../app/hooks/useData";
+import { useState, useEffect, useContext } from "react";
+
 import Pagination from "./Pagination";
 import TransactionList from "./TransactionList";
 import FilterDropDown from "./FilterDropDown";
@@ -8,6 +8,7 @@ import Search from "../shared/search/Search";
 
 import useSearch from "../../app/hooks/useSearch";
 import useFilter from "../../app/hooks/useFilter";
+import { GlobalContext } from "../context/GlobalContext";
 
 // ✅ Reusable Loader Component
 function Loader() {
@@ -19,7 +20,7 @@ function Loader() {
 }
 
 export default function TransactionsWrapper() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 

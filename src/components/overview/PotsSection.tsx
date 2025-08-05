@@ -1,8 +1,10 @@
 "use client";
-import useData from "@/app/hooks/useData";
+
 import SeeMore from "./SeeMore";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import Image from "next/image";
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 // ✅ Reusable loader
 function Loader() {
@@ -14,7 +16,7 @@ function Loader() {
 }
 
 export default function PotsSection() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching
   if (!data) return <Loader />;

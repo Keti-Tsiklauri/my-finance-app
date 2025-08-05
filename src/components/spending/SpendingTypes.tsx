@@ -1,9 +1,11 @@
 "use client";
-import useData from "../../app/hooks/useData";
+
 import Image from "next/image";
 import { formatAmount } from "../helperFunctions/formatAmount";
 import { formatDate } from "../helperFunctions/formatDate";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
+import { useContext } from "react";
+import { GlobalContext } from "../context/GlobalContext";
 
 function Ellipse({ color }: { color: string }) {
   return (
@@ -30,13 +32,13 @@ function Loader() {
 }
 
 export default function SpendingTypes() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching
   if (!data) return <Loader />;
 
   const { transactions, budgets } = data;
-
+  console.log(data);
   const getThemeColor = (category: string) => {
     const budget = budgets.find((b) => b.category === category);
     return budget ? budget.theme : "#000";

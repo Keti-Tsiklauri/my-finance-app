@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import AddButton from "../../add-button/AddButton";
 import AddNewBudget from "@/components/modals/AddNewBudget";
 import AddNewPot from "@/components/modals/AddNewPot";
 import { capitalizeEachWord } from "@/components/helperFunctions/capitalizeEachWord";
 
+import Loader from "@/components/modals/Loader";
+import { GlobalContext } from "@/components/context/GlobalContext";
 export default function Header({ type }: { type: "budget" | "pot" }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -13,7 +15,10 @@ export default function Header({ type }: { type: "budget" | "pot" }) {
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+  const { data, setData } = useContext(GlobalContext);
 
+  // ✅ Show loader while fetching
+  if (!data) return <Loader />;
   return (
     <>
       <div className="w-[343px] md:w-[700px] xxl:w-[1180px] mx-auto flex justify-between">

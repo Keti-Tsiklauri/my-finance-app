@@ -1,14 +1,15 @@
 "use client";
 
+import { useContext } from "react";
 import Loader from "./Loader";
-import useData from "@/app/hooks/useData";
+import { GlobalContext } from "../context/GlobalContext";
 
 export default function ColorPicker({
   onPick,
 }: {
   onPick?: (c: { theme: string; text: string }) => void;
 }) {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
   if (!data) return <Loader />;
 
   const { budgets } = data;

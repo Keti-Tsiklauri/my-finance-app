@@ -1,9 +1,11 @@
 "use client";
-import { calculateBillData } from "../helperFunctions/billhelpers";
+
+import { useCallback, useContext } from "react";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
 import SeeMore from "./SeeMore";
-import useData from "@/app/hooks/useData";
+import { GlobalContext } from "../context/GlobalContext";
+import { calculateBillData } from "../helperFunctions/billHelpers";
 
 // ✅ Shared loader
 function Loader() {
@@ -15,12 +17,13 @@ function Loader() {
 }
 
 export default function RecurringBillsSection() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching data
   if (!data) return <Loader />;
 
   const bills = data.transactions.filter((t) => t.category === "Bills");
+
   const { totalBills, totalUpcoming, totalDueSoon } = calculateBillData(bills);
 
   const billsArray = [

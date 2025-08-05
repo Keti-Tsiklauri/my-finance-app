@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 
-export default function AmountPicker({ text }: { text: string }) {
+export default function AmountPicker({
+  text,
+  value,
+  onChange,
+}: {
+  text: string;
+  value: string;
+  onChange: (val: string) => void;
+}) {
   return (
     <div>
       <p className="h-[18px] font-['Public_Sans'] font-bold text-[12px] leading-[150%] text-[#696868]">
@@ -20,6 +28,8 @@ export default function AmountPicker({ text }: { text: string }) {
         <input
           type="text"
           placeholder="e.g. 2000"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
           className="h-[21px] w-[233px] font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#201F24] placeholder-[#98908B] bg-transparent outline-none border-none"
         />
       </div>

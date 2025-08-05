@@ -1,7 +1,8 @@
 "use client";
-import useData from "@/app/hooks/useData";
+import { useContext } from "react";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { formatCurrency } from "../helperFunctions/formatAmount";
+import { GlobalContext } from "../context/GlobalContext";
 
 // ✅ Shared loader style
 function Loader() {
@@ -13,7 +14,7 @@ function Loader() {
 }
 
 export default function OverviewHeader() {
-  const data = useData();
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching data
   if (!data) return <Loader />;

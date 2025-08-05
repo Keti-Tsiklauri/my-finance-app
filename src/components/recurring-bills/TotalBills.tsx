@@ -1,10 +1,10 @@
 "use client";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { formatAmount } from "../helperFunctions/formatAmount";
-import useData from "../../app/hooks/useData";
+
 import Image from "next/image";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
-import { calculateBillData } from "../helperFunctions/billhelpers";
+import { calculateBillData } from "../helperFunctions/billHelpers";
 
 export interface Bill {
   avatar: string;
