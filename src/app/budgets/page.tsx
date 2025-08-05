@@ -7,11 +7,14 @@ export default function Budgets() {
       <div className="mb-5 ">
         <BudgetsHeader type="budget" />
       </div>
-      <div className="xxl:flex">
-        <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] pt-[20px] pb-[20px] mb-[20px] xxl:w-[440px] xxl:h-[220px]">
-          <SpendingSummary text=" Spending Summary" />
+      <div className="xxl:flex gap-6 items-start">
+        {/* Left column */}
+        <div className="w-full xxl:w-[350px]">
+          <SpendingSummary text="Spending Summary" />
         </div>
-        <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] pt-[30px] pb-[10px] xxl:w-[640px]">
+
+        {/* Right column */}
+        <div className="bg-white rounded-[12px] w-full xxl:w-[640px] mx-auto pt-[30px] pb-[10px]">
           <SpendingTypes />
         </div>
       </div>

@@ -1,3 +1,4 @@
+// CategoryHeader.tsx
 "use client";
 
 import Image from "next/image";
@@ -20,16 +21,18 @@ function Ellipse({ color }: { color: string }) {
 interface CategoryHeaderProps {
   color: string;
   category: string;
-  className?: string; // optional width/spacing etc
+  className?: string;
+  onMenuClick?: () => void; // ✅ New
 }
 
 export default function CategoryHeader({
   color,
   category,
   className = "",
+  onMenuClick,
 }: CategoryHeaderProps) {
   return (
-    <div className={`flex justify-between  w-[300px] md:w-[600px] `}>
+    <div className={`flex justify-between ${className}`}>
       <h2 className="flex items-center gap-2 mb-1">
         <Ellipse color={color} />
         <p className="h-[24px] font-public-sans font-extrabold text-[20px] leading-[1.2] text-gray-900">
@@ -42,6 +45,7 @@ export default function CategoryHeader({
         alt="more"
         width={14}
         height={14}
+        onClick={onMenuClick} // ✅ trigger click handler
       />
     </div>
   );
