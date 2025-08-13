@@ -9,11 +9,21 @@ import { formatDate } from "../helperFunctions/formatDate";
 import Loader from "../modals/Loader";
 import EditDelete from "../modals/EditDelete";
 import Delete from "../modals/Delete";
-
+import EditBudget from "../modals/EditBudget";
+const themeArray = [
+  { theme: "#277C78", text: "green" },
+  { theme: "#82C9D7", text: "cyan" },
+  { theme: "#F2CDAC", text: "yellow" },
+  { theme: "#626070", text: "navy" },
+  { theme: "#C94736", text: "red" },
+  { theme: "#826CB0", text: "purple" },
+  { theme: "#597C7C", text: "turquoise" },
+];
 export default function SpendingTypes() {
   const { data, setData } = useContext(GlobalContext);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [editCategory, setEditCategory] = useState<string | null>(null);
 
   if (!data) return <Loader />;
 
@@ -46,6 +56,21 @@ export default function SpendingTypes() {
     localStorage.setItem("finance-data", JSON.stringify(updatedData));
     setSelectedCategory(null);
     setShowDeleteConfirm(false);
+  };
+
+  const handleEditBudget = (
+    category: string,
+    maximum: number,
+    theme: string
+  ) => {
+    if (!data) return;
+    const updatedBudgets = data.budgets.map((b) =>
+      b.category === category ? { ...b, maximum, theme } : b
+    );
+    const updatedData = { ...data, budgets: updatedBudgets };
+    setData(updatedData);
+    localStorage.setItem("finance-data", JSON.stringify(updatedData));
+    setEditCategory(null);
   };
 
   return (
@@ -137,12 +162,12 @@ export default function SpendingTypes() {
                 </div>
               ))}
 
-              {/* Edit/Delete menu anchored to category */}
+              {/* Edit/Delete menu */}
               {selectedCategory === category && (
                 <div className="absolute top-10 right-0 z-50">
                   <EditDelete
                     text={category}
-                    onEdit={() => console.log("Edit clicked")}
+                    onEdit={() => setEditCategory(category)}
                     onDelete={() => setShowDeleteConfirm(true)}
                   />
                 </div>
@@ -163,24 +188,30 @@ export default function SpendingTypes() {
           />
         </div>
       )}
+
+      {/* Edit budget modal with dark backdrop */}
+      {editCategory && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
+          <EditBudget
+            category={editCategory}
+            currentMaximum={
+              budgets.find((b) => b.category === editCategory)?.maximum || 0
+            }
+            currentTheme={
+              budgets.find((b) => b.category === editCategory)?.theme ||
+              "#277C78"
+            }
+            currentText={
+              themeArray.find(
+                (t) =>
+                  t.theme ===
+                  budgets.find((b) => b.category === editCategory)?.theme
+              )?.text || "green"
+            }
+            onClose={() => setEditCategory(null)}
+          />
+        </div>
+      )}
     </div>
   );
 }
-
-//  <Delete
-//       text={`budget for ${selectedCategoryToDelete}`}
-//       type="budget"
-//       onConfirm={() => {
-//         const updatedBudgets = data.budgets.filter(
-//           (b) => b.category !== selectedCategoryToDelete
-//         );
-//         const updatedData = { ...data, budgets: updatedBudgets };
-//         setData(updatedData);
-//         localStorage.setItem(
-//           "finance-data",
-//           JSON.stringify(updatedData)
-//         );
-//         setSelectedCategoryToDelete(null); // close modal
-//       }}
-//       onCancel={() => setSelectedCategoryToDelete(null)}
-//     />

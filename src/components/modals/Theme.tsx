@@ -58,15 +58,14 @@ export default function Theme({ selectedColor, text, onChange }: ThemeProps) {
         w-[295px] md:w-[496px] h-[45px] bg-white border border-[#98908B] rounded-[8px] box-border cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mb-2">
           <div
-            className="w-4 h-4 flex-none rounded-full"
+            className="w-6 h-6 rounded-full border border-[#ccc]"
             style={{ backgroundColor: selectedColor.theme }}
-          ></div>
-          <p className="h-[21px] font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#201F24]">
-            {capitalizeEachWord(selectedColor.text)}
-          </p>
+          />
+          <p className="text-sm font-['Public_Sans']">{selectedColor.text}</p>
         </div>
+
         <Image
           src="images/modals/vector.svg"
           alt="vector"
