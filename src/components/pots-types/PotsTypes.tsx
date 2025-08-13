@@ -9,6 +9,7 @@ import Loader from "../modals/Loader";
 import { GlobalContext } from "../context/GlobalContext";
 import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
+import AddMoney from "../modals/AddMoney";
 import Withdraw from "../modals/Withdraw";
 const themeArray = [
   { theme: "#277C78", text: "green" },
@@ -25,6 +26,7 @@ export default function PotsTypes() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [editPotIndex, setEditPotIndex] = useState<number | null>(null);
   const [withdrawIndex, setWithdrawIndex] = useState<number | null>(null);
+  const [addMoneyIndex, setAddMoneyIndex] = useState<number | null>(null);
   if (!data) return <Loader />;
 
   const { pots } = data;
@@ -85,7 +87,10 @@ export default function PotsTypes() {
           <div className="flex justify-between mt-6 w-[300px] md:w-[600px] mx-auto">
             {/* Buttons */}
             <div className="flex justify-between mt-6 w-[300px] md:w-[600px] mx-auto">
-              <button className="w-[140px] md:w-[280px] h-[53px] bg-[#F8F4F0] rounded-lg hover:bg-[#e2dedc] transition-colors">
+              <button
+                className="w-[140px] md:w-[280px] h-[53px] bg-[#F8F4F0] rounded-lg hover:bg-[#e2dedc] transition-colors"
+                onClick={() => setAddMoneyIndex(index)}
+              >
                 + Add Money
               </button>
               <button
@@ -95,7 +100,14 @@ export default function PotsTypes() {
                 Withdraw
               </button>
             </div>
-
+            {addMoneyIndex !== null && (
+              <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[999]">
+                <AddMoney
+                  potIndex={addMoneyIndex}
+                  onClose={() => setAddMoneyIndex(null)}
+                />
+              </div>
+            )}
             {withdrawIndex !== null && (
               <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-[999]">
                 <Withdraw
