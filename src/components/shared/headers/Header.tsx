@@ -17,7 +17,7 @@ export default function Header({ type }: { type: "budget" | "pot" }) {
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
-  const { data, setData } = useContext(GlobalContext);
+  const { data } = useContext(GlobalContext);
 
   // ✅ Show loader while fetching
   if (!data) return <Loader />;
