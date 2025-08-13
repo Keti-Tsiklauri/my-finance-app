@@ -28,6 +28,7 @@ type Pot = {
   target: number;
   total: number;
   theme: string;
+  themeText?: string; // add this
 };
 
 type Balance = {

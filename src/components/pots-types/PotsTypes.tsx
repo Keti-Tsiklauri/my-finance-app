@@ -3,21 +3,31 @@
 import { useContext, useState } from "react";
 import EditDelete from "../modals/EditDelete";
 import Delete from "../modals/Delete";
+import EditPot from "../modals/EditPot";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
 import Loader from "../modals/Loader";
 import { GlobalContext } from "../context/GlobalContext";
 import { formatDollarWithDot } from "../helperFunctions/formatAmount";
 import { calculatePercentage } from "../helperFunctions/calculatePercentage";
-
+const themeArray = [
+  { theme: "#277C78", text: "green" },
+  { theme: "#82C9D7", text: "cyan" },
+  { theme: "#F2CDAC", text: "yellow" },
+  { theme: "#626070", text: "navy" },
+  { theme: "#C94736", text: "red" },
+  { theme: "#826CB0", text: "purple" },
+  { theme: "#597C7C", text: "turquoise" },
+];
 export default function PotsTypes() {
   const { data, setData } = useContext(GlobalContext);
   const [selectedPotIndex, setSelectedPotIndex] = useState<number | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [editPotIndex, setEditPotIndex] = useState<number | null>(null);
 
   if (!data) return <Loader />;
 
   const { pots } = data;
-
+  console.log(pots);
   const deletePot = (index: number) => {
     const updatedPots = pots.filter((_, i) => i !== index);
     const updatedData = { ...data, pots: updatedPots };
@@ -85,7 +95,7 @@ export default function PotsTypes() {
             <div className="absolute top-10 right-4 z-50">
               <EditDelete
                 text={pot.name}
-                onEdit={() => console.log("Edit clicked")}
+                onEdit={() => setEditPotIndex(index)}
                 onDelete={() => setShowDeleteConfirm(true)}
               />
             </div>
@@ -107,6 +117,22 @@ export default function PotsTypes() {
           )}
         </div>
       ))}
+
+      {/* Edit Pot Modal */}
+      {editPotIndex !== null && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
+          <EditPot
+            potName={pots[editPotIndex].name}
+            currentTarget={pots[editPotIndex].target}
+            currentTheme={pots[editPotIndex].theme}
+            currentText={
+              themeArray.find((t) => t.theme === pots[editPotIndex].theme)
+                ?.text || "green"
+            }
+            onClose={() => setEditPotIndex(null)}
+          />
+        </div>
+      )}
     </div>
   );
 }
