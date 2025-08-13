@@ -63,7 +63,7 @@ export default function PotsTypes() {
             </div>
 
             {/* Progress bar */}
-            <div className="h-[8px] bg-[#F8F4F0] rounded-[4px] flex">
+            <div className="h-[8px] bg-[#F8F4F0] rounded-[4px] flex mt-2">
               <div
                 className="h-full rounded-[4px]"
                 style={{
