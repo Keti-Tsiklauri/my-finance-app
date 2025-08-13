@@ -4,17 +4,16 @@ import { useContext, useState } from "react";
 import Image from "next/image";
 import { GlobalContext } from "../context/GlobalContext";
 import CategoryHeader from "../shared/list-header/CategoryHeader";
-import Delete from "../modals/Delete"; // ✅ Import the Delete modal
 import { formatAmount } from "../helperFunctions/formatAmount";
 import { formatDate } from "../helperFunctions/formatDate";
 import Loader from "../modals/Loader";
-// ...Ellipse and Loader unchanged
+import EditDelete from "../modals/EditDelete";
+import Delete from "../modals/Delete";
 
 export default function SpendingTypes() {
   const { data, setData } = useContext(GlobalContext);
-  const [selectedCategoryToDelete, setSelectedCategoryToDelete] = useState<
-    string | null
-  >(null); // ✅ Modal state
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   if (!data) return <Loader />;
 
@@ -38,19 +37,19 @@ export default function SpendingTypes() {
   const summary = getBudgetSummary();
 
   const handleDeleteBudget = () => {
-    if (!data || !selectedCategoryToDelete) return;
-
+    if (!data || !selectedCategory) return;
     const updatedBudgets = data.budgets.filter(
-      (b) => b.category !== selectedCategoryToDelete
+      (b) => b.category !== selectedCategory
     );
     const updatedData = { ...data, budgets: updatedBudgets };
     setData(updatedData);
     localStorage.setItem("finance-data", JSON.stringify(updatedData));
-    setSelectedCategoryToDelete(null);
+    setSelectedCategory(null);
+    setShowDeleteConfirm(false);
   };
 
   return (
-    <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px] ">
+    <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px]">
       <div className="w-[300px] md:w-[620px] lg:!w-[600px] mb-[100px] mx-auto">
         {summary.map(({ category, spent, free, maximum }) => {
           const color = getThemeColor(category);
@@ -64,14 +63,19 @@ export default function SpendingTypes() {
           return (
             <div
               key={category}
-              className="mb-10 pb-4 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8"
+              className="relative mb-10 pb-4 w-[303px] md:w-[620px] lg:!w-[600px] md:m-auto xxl:w-[600px] xxl:mb-8"
             >
               <CategoryHeader
                 color={color}
                 category={category}
                 className="w-full"
-                onMenuClick={() => setSelectedCategoryToDelete(category)} // ✅ Trigger modal
+                onMenuClick={() =>
+                  setSelectedCategory(
+                    selectedCategory === category ? null : category
+                  )
+                }
               />
+
               <p className="text-sm text-gray-500 mb-2">
                 Maximum of ${maximum.toFixed(2)}
               </p>
@@ -132,33 +136,51 @@ export default function SpendingTypes() {
                   </p>
                 </div>
               ))}
+
+              {/* Edit/Delete menu anchored to category */}
+              {selectedCategory === category && (
+                <div className="absolute top-10 right-0 z-50">
+                  <EditDelete
+                    text={category}
+                    onEdit={() => console.log("Edit clicked")}
+                    onDelete={() => setShowDeleteConfirm(true)}
+                  />
+                </div>
+              )}
             </div>
           );
         })}
-
-        {/* ✅ Delete Modal */}
-        {selectedCategoryToDelete && (
-          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center justify-center z-50">
-            <Delete
-              text={`budget for ${selectedCategoryToDelete}`}
-              type="budget"
-              onConfirm={() => {
-                const updatedBudgets = data.budgets.filter(
-                  (b) => b.category !== selectedCategoryToDelete
-                );
-                const updatedData = { ...data, budgets: updatedBudgets };
-                setData(updatedData);
-                localStorage.setItem(
-                  "finance-data",
-                  JSON.stringify(updatedData)
-                );
-                setSelectedCategoryToDelete(null); // close modal
-              }}
-              onCancel={() => setSelectedCategoryToDelete(null)}
-            />
-          </div>
-        )}
       </div>
+
+      {/* Delete modal with dark backdrop */}
+      {showDeleteConfirm && selectedCategory && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
+          <Delete
+            text={`budget for ${selectedCategory}`}
+            type="budget"
+            onConfirm={handleDeleteBudget}
+            onCancel={() => setShowDeleteConfirm(false)}
+          />
+        </div>
+      )}
     </div>
   );
 }
+
+//  <Delete
+//       text={`budget for ${selectedCategoryToDelete}`}
+//       type="budget"
+//       onConfirm={() => {
+//         const updatedBudgets = data.budgets.filter(
+//           (b) => b.category !== selectedCategoryToDelete
+//         );
+//         const updatedData = { ...data, budgets: updatedBudgets };
+//         setData(updatedData);
+//         localStorage.setItem(
+//           "finance-data",
+//           JSON.stringify(updatedData)
+//         );
+//         setSelectedCategoryToDelete(null); // close modal
+//       }}
+//       onCancel={() => setSelectedCategoryToDelete(null)}
+//     />
