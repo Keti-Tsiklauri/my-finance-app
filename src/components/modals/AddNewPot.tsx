@@ -17,8 +17,6 @@ export default function AddNewPot({
   text,
   description,
   onClose,
-  selectedCategory,
-  setSelectedCategory,
 }: AddNewPotProps) {
   const [theme, setTheme] = useState({ theme: "#277C78", text: "green" });
   const [amount, setAmount] = useState("");

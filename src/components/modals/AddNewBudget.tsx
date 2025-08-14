@@ -5,8 +5,8 @@ import AddButton from "../add-button/AddButton";
 import Theme from "./Theme";
 import AmountPicker from "./AmountPicker";
 import InfoBox from "./InfoBox";
-import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
-import { GlobalContext, GlobalDataProvider } from "../context/GlobalContext";
+
+import { GlobalContext } from "../context/GlobalContext";
 type AddNewBudgetProps = {
   text: string;
   description: string;

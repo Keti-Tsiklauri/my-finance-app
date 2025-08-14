@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
 import SeeMore from "./SeeMore";

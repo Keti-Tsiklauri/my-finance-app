@@ -33,14 +33,6 @@ export default function SearchBills({ bills, onFilter }: SearchBillsProps) {
     onFilter(currentItems);
   }, [filteredItems, currentPage, itemsPerPage, onFilter]);
 
-  const categories = [
-    { id: -1, name: "All" },
-    ...Array.from(new Set(bills.map((b) => b.category))).map((cat, idx) => ({
-      id: idx,
-      name: cat,
-    })),
-  ];
-
   return (
     <div className="flex justify-around  mx-auto mb-4 md:w-[660px] md:justify-between">
       <Search
