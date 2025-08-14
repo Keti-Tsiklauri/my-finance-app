@@ -2,12 +2,12 @@
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
-  output: "export",
-  basePath: isProd ? "/my-finance-app" : "",
-  assetPrefix: isProd ? "/my-finance-app/" : "",
+  output: "export", // static HTML export
+  basePath: isProd ? "/my-finance-app" : "", // GitHub Pages repo path
+  assetPrefix: isProd ? "/my-finance-app/" : "", // ensures assets load correctly
 
   images: {
-    unoptimized: true,
+    unoptimized: true, // needed for static export
   },
 };
 
