@@ -16,7 +16,7 @@ export default function SearchBills({ bills, onFilter }: SearchBillsProps) {
   const itemsPerPage = 10;
 
   const { query, setQuery, searchedItems } = useSearch(bills, "name");
-  const { filteredItems, sortOption, setSortOption, category, setCategory } =
+  const { filteredItems, sortOption, setSortOption, category } =
     useFilter(searchedItems);
 
   useEffect(() => {

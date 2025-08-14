@@ -58,21 +58,6 @@ export default function SpendingTypes() {
     setShowDeleteConfirm(false);
   };
 
-  const handleEditBudget = (
-    category: string,
-    maximum: number,
-    theme: string
-  ) => {
-    if (!data) return;
-    const updatedBudgets = data.budgets.map((b) =>
-      b.category === category ? { ...b, maximum, theme } : b
-    );
-    const updatedData = { ...data, budgets: updatedBudgets };
-    setData(updatedData);
-    localStorage.setItem("finance-data", JSON.stringify(updatedData));
-    setEditCategory(null);
-  };
-
   return (
     <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px]">
       <div className="w-[300px] md:w-[620px] lg:!w-[600px] mb-[100px] mx-auto">

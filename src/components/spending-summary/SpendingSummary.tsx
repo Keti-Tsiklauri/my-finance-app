@@ -2,18 +2,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Loader from "../modals/Loader";
-
-type Budget = {
-  category: string;
-  maximum: number;
-  theme: string;
-};
-
-type Transaction = {
-  category: string;
-  amount: number;
-};
-
 export default function SpendingSummary({
   text = "Spending Summary",
   width = "w-full",
