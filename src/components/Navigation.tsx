@@ -160,7 +160,7 @@ export default function Navigation() {
         {/* Logo */}
         <div className="flex flex-col justify-center items-start px-8 py-10 gap-2 w-full h-[101.76px]">
           <Image
-            src="./images/navigation/logo.svg"
+            src="./images/navigation/finance-logo.svg"
             alt="Logo"
             width={120}
             height={20}
