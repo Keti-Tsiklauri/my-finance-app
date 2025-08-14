@@ -1,3 +1,9 @@
+import OverView from "./overview/page";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <OverView />
+    </div>
+  );
 }

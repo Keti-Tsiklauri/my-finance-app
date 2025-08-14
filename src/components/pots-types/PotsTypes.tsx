@@ -30,7 +30,7 @@ export default function PotsTypes() {
   if (!data) return <Loader />;
 
   const { pots } = data;
-  console.log(pots);
+
   const deletePot = (index: number) => {
     const updatedPots = pots.filter((_, i) => i !== index);
     const updatedData = { ...data, pots: updatedPots };

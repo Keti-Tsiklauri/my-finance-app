@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -76,6 +77,9 @@ export default function Navigation() {
   const router = useRouter();
   const pathname = usePathname();
 
+  // ✅ Treat "/" as "/overview"
+  const currentPath = pathname === "/" ? "/overview" : pathname;
+
   const NavLinks = useMemo<NavLink[]>(
     () => [
       {
@@ -134,15 +138,15 @@ export default function Navigation() {
       {/* Mobile & Tablet Bottom Nav */}
       <nav
         aria-label="Mobile and Tablet Navigation"
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center px-4 pt-2 bg-[#201F24] h-[52px] md:h-[74px]  "
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center px-4 pt-2 bg-[#201F24] h-[52px] md:h-[74px]"
       >
         {NavLinks.map((link) => (
           <NavItem
             key={link.id}
             link={link}
-            isActive={pathname === link.path}
+            isActive={currentPath === link.path}
             onClick={() => handleClick(link.path)}
-            showText={false} // hide text on mobile/tablet bottom nav
+            showText={false}
             isDesktop={false}
           />
         ))}
@@ -151,7 +155,7 @@ export default function Navigation() {
       {/* Desktop Left Sidebar */}
       <nav
         aria-label="Desktop Navigation"
-        className="hidden h-screen  overflow-y-auto lg:flex flex-col items-start p-0 pb-6 gap-6 w-[300px]  bg-[#201F24] rounded-r-[16px]"
+        className="hidden h-screen overflow-y-auto lg:flex flex-col items-start p-0 pb-6 gap-6 w-[300px] bg-[#201F24] rounded-r-[16px]"
       >
         {/* Logo */}
         <div className="flex flex-col justify-center items-start px-8 py-10 gap-2 w-full h-[101.76px]">
@@ -167,7 +171,7 @@ export default function Navigation() {
           <NavItem
             key={link.id}
             link={link}
-            isActive={pathname === link.path}
+            isActive={currentPath === link.path}
             onClick={() => handleClick(link.path)}
             showText={true}
             isDesktop={true}
