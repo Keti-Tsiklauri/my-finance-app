@@ -6,12 +6,13 @@ import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
 import { calculateBillData } from "../helperFunctions/billHelpers";
 
 export interface Bill {
-  avatar: string;
-  name: string;
-  category: string;
+  avatar?: string;
+  name?: string;
+  category?: string;
   date: string;
   amount: number;
-  recurring: boolean;
+  recurring?: boolean;
+  [key: string]: unknown; // allows extra properties without breaking
 }
 
 export default function TotalBills({ bills }: { bills: Bill[] }) {

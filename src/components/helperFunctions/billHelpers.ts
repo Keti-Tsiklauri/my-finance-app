@@ -2,7 +2,7 @@
 export interface Bill {
   amount: number;
   date: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export function calculateBillData(bills: Bill[], soonThreshold = 7) {
