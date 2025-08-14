@@ -57,7 +57,7 @@ export const GlobalDataProvider = ({ children }: { children: ReactNode }) => {
       if (stored) {
         setData(JSON.parse(stored));
       } else {
-        const res = await fetch("/data.json");
+        const res = await fetch("./data.json");
         const json = await res.json();
         setData(json);
         localStorage.setItem("finance-data", JSON.stringify(json));
