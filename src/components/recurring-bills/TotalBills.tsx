@@ -1,6 +1,5 @@
 "use client";
 import { capitalizeEachWord } from "../helperFunctions/capitalizeEachWord";
-import { formatAmount } from "../helperFunctions/formatAmount";
 
 import Image from "next/image";
 import { makePositiveNumber } from "../helperFunctions/makePositiveNumber";
