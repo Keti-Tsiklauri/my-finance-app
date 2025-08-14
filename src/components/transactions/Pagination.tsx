@@ -48,7 +48,7 @@ export default function Pagination({
           className="cursor-pointer flex justify-center items-center h-[30px] md:h-[40px] w-[30px] md:w-[94px] md:px-4 md:py-2 md:gap-4 bg-white border border-[#98908B] rounded-lg"
         >
           <Image
-            src="/images/transactions/left.svg"
+            src="./images/transactions/left.svg"
             alt="left"
             width={16}
             height={16}
@@ -78,7 +78,7 @@ export default function Pagination({
         >
           <p className="hidden md:block text-[14px] text-[#201F24]">next</p>
           <Image
-            src="/images/transactions/right.svg"
+            src="./images/transactions/right.svg"
             alt="right"
             width={16}
             height={16}

@@ -61,7 +61,7 @@ export default function EditPot({
           Edit Pot
         </p>
         <Image
-          src="/images/modals/close.svg"
+          src="./images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}

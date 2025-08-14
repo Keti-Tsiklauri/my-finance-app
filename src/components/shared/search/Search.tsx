@@ -56,7 +56,7 @@ export default function Search({
         className="ml-2 flex items-center justify-center"
       >
         <Image
-          src="/images/transactions/search.svg"
+          src="./images/transactions/search.svg"
           alt="search"
           width={16}
           height={16}

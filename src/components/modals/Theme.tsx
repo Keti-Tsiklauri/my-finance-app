@@ -67,7 +67,7 @@ export default function Theme({ selectedColor, text, onChange }: ThemeProps) {
         </div>
 
         <Image
-          src="images/modals/vector.svg"
+          src="./images/modals/vector.svg"
           alt="vector"
           width={10}
           height={10}

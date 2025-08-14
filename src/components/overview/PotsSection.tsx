@@ -33,7 +33,7 @@ export default function PotsSection() {
         {/* Total Saved Section */}
         <div className="flex gap-4 items-center">
           <Image
-            src="images/overview/total.svg"
+            src="./images/overview/total.svg"
             alt="total saved"
             width={40}
             height={45}

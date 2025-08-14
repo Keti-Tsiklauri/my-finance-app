@@ -41,7 +41,7 @@ export default function CategoryHeader({
       </h2>
       <Image
         className="cursor-pointer"
-        src="/images/budgets/spread.svg"
+        src="./images/budgets/spread.svg"
         alt="more"
         width={14}
         height={14}

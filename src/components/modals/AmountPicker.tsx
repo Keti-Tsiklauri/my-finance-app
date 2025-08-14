@@ -20,7 +20,7 @@ export default function AmountPicker({
                p-[12px_20px] gap-3  w-[295px] md:w-[496px] h-[45px] bg-white border border-[#98908B] rounded-[8px] box-border"
       >
         <Image
-          src="images/modals/dolar.svg"
+          src="./images/modals/dolar.svg"
           alt="dolar"
           width={10}
           height={20}

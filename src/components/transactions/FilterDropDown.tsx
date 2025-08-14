@@ -71,7 +71,7 @@ export default function FilterDropDown({
           {option}
         </p>
         <Image
-          src="/images/transactions/down.svg"
+          src="./images/transactions/down.svg"
           alt="down"
           width={16}
           height={16}

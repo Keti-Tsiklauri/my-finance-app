@@ -64,7 +64,7 @@ export default function AddNewPot({
           {text}
         </p>
         <Image
-          src="/images/modals/close.svg"
+          src="./images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}

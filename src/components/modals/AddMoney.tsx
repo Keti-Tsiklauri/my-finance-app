@@ -49,7 +49,7 @@ export default function AddMoney({ potIndex, onClose }: AddMoneyProps) {
         <h2 className="text-xl font-bold">{`Add to '${pot.name}'`}</h2>
 
         <Image
-          src="/images/modals/close.svg"
+          src="./images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}

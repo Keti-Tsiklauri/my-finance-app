@@ -55,7 +55,7 @@ function NavItem({
         <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#277C78] rounded-t-md" />
       )}
       <Image
-        src={`/${isActive ? link.activeImage : link.image}`}
+        src={`./${isActive ? link.activeImage : link.image}`}
         alt={link.alt}
         width={24}
         height={24}
@@ -85,40 +85,40 @@ export default function Navigation() {
       {
         id: "0",
         text: "overview",
-        image: "images/navigation/home.svg",
-        activeImage: "images/navigation/home-active.svg",
+        image: "./images/navigation/home.svg",
+        activeImage: "./images/navigation/home-active.svg",
         path: "/overview",
         alt: "home",
       },
       {
         id: "1",
         text: "transactions",
-        image: "images/navigation/transactions.svg",
-        activeImage: "images/navigation/transactions-active.svg",
+        image: "./images/navigation/transactions.svg",
+        activeImage: "./images/navigation/transactions-active.svg",
         path: "/transactions",
         alt: "transactions",
       },
       {
         id: "2",
         text: "budgets",
-        image: "images/navigation/budgets.svg",
-        activeImage: "images/navigation/budgets-active.svg",
+        image: "./images/navigation/budgets.svg",
+        activeImage: "./images/navigation/budgets-active.svg",
         path: "/budgets",
         alt: "budgets",
       },
       {
         id: "3",
         text: "pots",
-        image: "images/navigation/pots.svg",
-        activeImage: "images/navigation/pots-active.svg",
+        image: "./images/navigation/pots.svg",
+        activeImage: "./images/navigation/pots-active.svg",
         path: "/pots",
         alt: "pots",
       },
       {
         id: "4",
         text: "recurring bills",
-        image: "images/navigation/bills.svg",
-        activeImage: "images/navigation/bills-active.svg",
+        image: "./images/navigation/bills.svg",
+        activeImage: "./images/navigation/bills-active.svg",
         path: "/recurring-bills",
         alt: "bills",
       },
@@ -160,7 +160,7 @@ export default function Navigation() {
         {/* Logo */}
         <div className="flex flex-col justify-center items-start px-8 py-10 gap-2 w-full h-[101.76px]">
           <Image
-            src="/images/navigation/logo.svg"
+            src="./images/navigation/logo.svg"
             alt="Logo"
             width={120}
             height={20}

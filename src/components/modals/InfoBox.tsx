@@ -55,7 +55,7 @@ export default function InfoBox({ label, content, onChange }: InfoBoxProps) {
           {capitalizeEachWord(content)}
         </p>
         <Image
-          src="images/modals/vector.svg"
+          src="./images/modals/vector.svg"
           alt="dropdown arrow"
           width={10}
           height={10}

@@ -32,7 +32,7 @@ export default function TotalBills({ bills }: { bills: Bill[] }) {
       {/* Total bills card */}
       <div className="flex items-center p-[24px_20px] gap-[20px] h-[118px] bg-[#201F24] rounded-[12px] md:w-[330px]">
         <Image
-          src="images/recurring-bills/icon.svg"
+          src="./images/recurring-bills/icon.svg"
           width={30}
           height={25}
           alt="recurring bills"

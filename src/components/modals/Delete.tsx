@@ -19,7 +19,7 @@ export default function Delete({
           {capitalizeEachWord(`delete ${type}?`)}
         </p>
         <Image
-          src="/images/modals/close.svg"
+          src="./images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}

@@ -24,7 +24,7 @@ export default function SeeMore({ section, action, width, href }: CardProps) {
           {capitalizeEachWord(action)}
         </p>
         <Image
-          src="/images/overview/right.svg"
+          src="./images/overview/right.svg"
           alt="see more"
           width={10}
           height={10}

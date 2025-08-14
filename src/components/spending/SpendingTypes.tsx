@@ -125,7 +125,7 @@ export default function SpendingTypes() {
                 <div className="flex items-center cursor-pointer">
                   <p className="text-sm text-[#696868]">See all</p>
                   <Image
-                    src="/images/budgets/down-fill.svg"
+                    src="./images/budgets/down-fill.svg"
                     alt="down"
                     width={12}
                     height={12}

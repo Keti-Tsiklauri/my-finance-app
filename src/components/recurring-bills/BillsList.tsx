@@ -43,8 +43,8 @@ export default function BillsList({ bills }: { bills: Bill[] }) {
               <Image
                 src={
                   elem.recurring
-                    ? "images/recurring-bills/paid.svg"
-                    : "images/recurring-bills/unpaid.svg"
+                    ? "./images/recurring-bills/paid.svg"
+                    : "./images/recurring-bills/unpaid.svg"
                 }
                 alt="paid or unpaid image"
                 width={13}

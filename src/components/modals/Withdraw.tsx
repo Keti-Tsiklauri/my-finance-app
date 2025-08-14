@@ -52,7 +52,7 @@ export default function Withdraw({ potIndex, onClose }: WithdrawProps) {
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold"> {`Withdraw from '${pot.name}'`}</h2>
         <Image
-          src="/images/modals/close.svg"
+          src="./images/modals/close.svg"
           alt="close button"
           width={25}
           height={25}
