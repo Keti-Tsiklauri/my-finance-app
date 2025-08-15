@@ -28,9 +28,9 @@ export default function SpendingSummary({
     typeof limit === "number" ? budgets.slice(0, limit) : budgets;
 
   return (
-    <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px] xxl:w-[440px]">
-      <div className="w-[300px] md:w-[620px] xxl:w-[350px] md:mx-auto lg:w-[600px] xl:w-[300px] mx-auto xl:mx-0 flex flex-col justify-start items-start">
-        <h2 className="mb-3 font-publicSans font-bold text-[20px] text-[#201F24]">
+    <div className="bg-white rounded-[12px] w-[343px] mx-auto md:w-[700px] mb-[20px] pt-[20px] pb-[20px] xxl:w-[440px] ">
+      <div className="w-[300px] md:w-[620px] xxl:w-[350px] md:mx-auto lg:w-[600px] xl:w-[300px] mx-auto flex flex-col justify-start items-start">
+        <h2 className="mb-2 font-publicSans font-bold text-[20px] text-[#201F24]">
           {text}
         </h2>
         <ul className={`${width} w-full`}>
