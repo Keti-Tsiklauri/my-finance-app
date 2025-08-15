@@ -29,7 +29,7 @@ export default function PotsSection() {
     <div className="p-[24px_20px] gap-5 w-[343px] mt-4 mx-auto md:w-[700px]">
       <SeeMore section="pots" action="see details" href="/pots" />
 
-      <div className="md:flex">
+      <div className="md:flex md:w-[620px] mx-auto">
         {/* Total Saved Section */}
         <div className="flex gap-4 items-center">
           <Image
