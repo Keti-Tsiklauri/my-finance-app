@@ -70,11 +70,22 @@ export default function Withdraw({ potIndex, onClose }: WithdrawProps) {
         type="number"
         value={amount}
         onChange={(e) => {
-          setAmount(e.target.value);
+          const value = e.target.value;
+
+          // ✅ Remove negative sign if typed
+          if (Number(value) < 0) return;
+
+          setAmount(value);
           if (error) setError("");
         }}
-        onKeyDown={(e) => e.key === "Enter" && handleWithdraw()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleWithdraw();
+
+          // Optional: prevent typing '-' directly
+          if (e.key === "-") e.preventDefault();
+        }}
         placeholder="Enter amount"
+        min="0" // ✅ ensures value cannot go below 0 on some browsers
         className="border border-gray-300 rounded-lg p-2 w-full mb-3"
       />
 
