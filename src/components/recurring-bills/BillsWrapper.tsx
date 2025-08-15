@@ -12,7 +12,12 @@ export default function BillsWrapper() {
 
   // ✅ Hooks are always called in the same order
   const bills = useMemo(
-    () => (data ? data.transactions.filter((t) => t.category === "Bills") : []),
+    () =>
+      data
+        ? data.transactions
+            .filter((t) => t.category === "Bills")
+            .map((bill) => ({ ...bill, amount: Math.abs(bill.amount) })) // make positive
+        : [],
     [data]
   );
 
