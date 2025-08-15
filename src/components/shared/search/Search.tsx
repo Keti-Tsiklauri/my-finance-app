@@ -12,7 +12,7 @@ interface SearchTransactionProps {
 
 export default function Search({
   placeholder = "Search Transaction",
-  width = "w-full md:w-[160px]", // full width on small screens, fixed on md+
+  width = "w-full md:w-[160px]",
   height = "h-[45px]",
   onSearch,
 }: SearchTransactionProps) {
@@ -38,6 +38,11 @@ export default function Search({
     }
   };
 
+  const handleClear = () => {
+    setInputValue("");
+    onSearch(""); // Reset list
+  };
+
   return (
     <div
       className={`${width} ${height} flex items-center bg-white border border-[#98908B] rounded-[8px] px-2`}
@@ -50,6 +55,8 @@ export default function Search({
         placeholder={isSmallScreen ? "Search" : placeholder}
         className="flex-grow bg-transparent outline-none font-['Public_Sans'] text-[14px] placeholder:text-[#98908B]"
       />
+
+      {/* Search icon - always visible */}
       <button
         onClick={handleSearchClick}
         aria-label="Search"
@@ -63,6 +70,23 @@ export default function Search({
           priority
         />
       </button>
+
+      {/* X icon - visible only when input is not empty */}
+      {inputValue && (
+        <button
+          onClick={handleClear}
+          aria-label="Clear search"
+          className="ml-2 flex items-center justify-center"
+        >
+          <Image
+            src="./images/modals/close.svg"
+            alt="clear"
+            width={16}
+            height={16}
+            priority
+          />
+        </button>
+      )}
     </div>
   );
 }

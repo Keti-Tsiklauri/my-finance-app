@@ -9,3 +9,7 @@ body {
   padding: 0;
   overflow: hidden; /* Prevent double scrollbar */
 }
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
