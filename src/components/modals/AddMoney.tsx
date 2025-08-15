@@ -67,11 +67,22 @@ export default function AddMoney({ potIndex, onClose }: AddMoneyProps) {
         type="number"
         value={amount}
         onChange={(e) => {
-          setAmount(e.target.value);
+          const value = e.target.value;
+
+          // ✅ Prevent negative numbers
+          if (Number(value) < 0) return;
+
+          setAmount(value);
           if (error) setError("");
         }}
-        onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") handleAdd();
+
+          // Optional: block typing '-' directly
+          if (e.key === "-") e.preventDefault();
+        }}
         placeholder="Enter amount"
+        min="0"
         className="border border-gray-300 rounded-lg p-2 w-full mb-3"
       />
 
