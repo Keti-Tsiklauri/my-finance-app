@@ -10,6 +10,7 @@ import Loader from "../modals/Loader";
 import EditDelete from "../modals/EditDelete";
 import Delete from "../modals/Delete";
 import EditBudget from "../modals/EditBudget";
+
 const themeArray = [
   { theme: "#277C78", text: "green" },
   { theme: "#82C9D7", text: "cyan" },
@@ -19,11 +20,13 @@ const themeArray = [
   { theme: "#826CB0", text: "purple" },
   { theme: "#597C7C", text: "turquoise" },
 ];
+
 export default function SpendingTypes() {
   const { data, setData } = useContext(GlobalContext);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [editCategory, setEditCategory] = useState<string | null>(null);
+  const [seeAllCategory, setSeeAllCategory] = useState<string | null>(null); // ✅ New state for modal
 
   if (!data) return <Loader />;
 
@@ -122,7 +125,10 @@ export default function SpendingTypes() {
                 <p className="text-base font-bold text-[#201F24]">
                   Latest Spending
                 </p>
-                <div className="flex items-center cursor-pointer">
+                <div
+                  className="flex items-center cursor-pointer"
+                  onClick={() => setSeeAllCategory(category)} // ✅ Open modal
+                >
                   <p className="text-sm text-[#696868]">See all</p>
                   <Image
                     src="./images/budgets/down-fill.svg"
@@ -147,7 +153,6 @@ export default function SpendingTypes() {
                 </div>
               ))}
 
-              {/* Edit/Delete menu */}
               {selectedCategory === category && (
                 <div className="absolute top-10 right-0 z-50">
                   <EditDelete
@@ -162,7 +167,49 @@ export default function SpendingTypes() {
         })}
       </div>
 
-      {/* Delete modal with dark backdrop */}
+      {/* ✅ "See All" Modal */}
+      {seeAllCategory && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
+          <div className="bg-white rounded-lg p-6 w-[90%] max-w-[500px] max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">
+                {seeAllCategory} - All Transactions
+              </h2>
+              <Image
+                src="./images/modals/close.svg"
+                alt="close"
+                width={25}
+                height={25}
+                className="cursor-pointer"
+                onClick={() => setSeeAllCategory(null)}
+              />
+            </div>
+            {transactions
+              .filter((t) => t.category === seeAllCategory)
+              .sort(
+                (a, b) =>
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+              )
+              .map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex justify-between items-center border-b py-2"
+                >
+                  <div>
+                    <p className="text-sm font-medium">{item.name}</p>
+                    <p className="text-xs text-gray-500">
+                      {formatDate(item.date)}
+                    </p>
+                  </div>
+                  <p className="text-sm font-bold">
+                    {formatAmount(item.amount)}
+                  </p>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
+
       {showDeleteConfirm && selectedCategory && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
           <Delete
@@ -174,7 +221,6 @@ export default function SpendingTypes() {
         </div>
       )}
 
-      {/* Edit budget modal with dark backdrop */}
       {editCategory && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[999]">
           <EditBudget
