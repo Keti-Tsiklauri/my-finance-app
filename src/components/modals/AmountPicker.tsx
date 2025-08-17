@@ -10,6 +10,16 @@ export default function AmountPicker({
   value: string;
   onChange: (val: string) => void;
 }) {
+  // Only allow positive numbers or empty string
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+
+    // Allow only digits
+    if (/^\d*$/.test(newValue)) {
+      onChange(newValue);
+    }
+  };
+
   return (
     <div>
       <p className="h-[18px] font-['Public_Sans'] font-bold text-[12px] leading-[150%] text-[#696868]">
@@ -29,7 +39,7 @@ export default function AmountPicker({
           type="text"
           placeholder="e.g. 2000"
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={handleChange}
           className="h-[21px] w-[233px] font-['Public_Sans'] font-normal text-[14px] leading-[150%] text-[#201F24] placeholder-[#98908B] bg-transparent outline-none border-none"
         />
       </div>

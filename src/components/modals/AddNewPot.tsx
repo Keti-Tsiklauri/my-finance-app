@@ -80,7 +80,7 @@ export default function AddNewPot({
         <p className="text-[12px] font-bold text-[#696868]">
           {capitalizeEachWord("pot name")}
         </p>
-        <div className="flex items-center px-5 py-3 border border-[#98908B] rounded-[8px] w-full">
+        <div className="flex items-center px-5 py-3 border border-[#98908B] rounded-[8px] w-[295px] md:w-[496px]">
           <input
             type="text"
             placeholder="Concert Ticket"

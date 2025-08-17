@@ -41,7 +41,7 @@ export default function InfoBox({ label, content, onChange }: InfoBoxProps) {
   }, [open]);
 
   return (
-    <>
+    <div className="flex flex-col gap-0">
       <p className="h-[18px] font-['Public_Sans'] font-bold text-[12px] leading-[150%] text-[#696868]">
         {capitalizeEachWord(label)}
       </p>
@@ -82,6 +82,6 @@ export default function InfoBox({ label, content, onChange }: InfoBoxProps) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }
